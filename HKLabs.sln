@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HKLabs", "HKLabs\HKLabs.csproj", "{8BF33E0B-B33E-4610-9AFB-8CF1E9924832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "All", "All\All.csproj", "{003984F4-A872-41F4-A3E2-9950C99815F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BF33E0B-B33E-4610-9AFB-8CF1E9924832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF33E0B-B33E-4610-9AFB-8CF1E9924832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF33E0B-B33E-4610-9AFB-8CF1E9924832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF33E0B-B33E-4610-9AFB-8CF1E9924832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003984F4-A872-41F4-A3E2-9950C99815F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003984F4-A872-41F4-A3E2-9950C99815F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003984F4-A872-41F4-A3E2-9950C99815F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003984F4-A872-41F4-A3E2-9950C99815F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

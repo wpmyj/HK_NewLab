@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{003984F4-A872-41F4-A3E2-9950C99815F2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>All</RootNamespace>
+    <AssemblyName>All</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DllAndOcx\Data\Excel\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>DllAndOcx\Data\Excel\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>DllAndOcx\Data\Excel\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=9.0.242.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DllAndOcx\Data\SqlCe\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\Api.cs" />
+    <Compile Include="Class\Check.cs" />
+    <Compile Include="Class\Code.cs" />
+    <Compile Include="Class\Environment.cs" />
+    <Compile Include="Class\Error.cs" />
+    <Compile Include="Class\FileIO.cs" />
+    <Compile Include="Class\HardInfo.cs" />
+    <Compile Include="Class\InfoAttribute.cs" />
+    <Compile Include="Class\Net.cs" />
+    <Compile Include="Class\Num.cs" />
+    <Compile Include="Class\Reflex.cs" />
+    <Compile Include="Class\Region.cs" />
+    <Compile Include="Class\SingleFileSave.cs" />
+    <Compile Include="Class\Style.cs" />
+    <Compile Include="Class\TypeUse.cs" />
+    <Compile Include="Class\User.cs" />
+    <Compile Include="Class\XmlHelp.cs" />
+    <Compile Include="Communicate\Api232.cs" />
+    <Compile Include="Communicate\AutoReadAndWrite.cs" />
+    <Compile Include="Communicate\Base\Api232.cs" />
+    <Compile Include="Communicate\Base\Base.cs" />
+    <Compile Include="Communicate\Base\TcpClient.cs" />
+    <Compile Include="Communicate\Base\Udp.cs" />
+    <Compile Include="Communicate\Com.cs" />
+    <Compile Include="Communicate\Communicate.cs" />
+    <Compile Include="Communicate\Data\CommunicateStyle.cs" />
+    <Compile Include="Communicate\Data\AllReadData.cs" />
+    <Compile Include="Communicate\Data\ReadDataStyle.cs" />
+    <Compile Include="Communicate\Data\MeterStyle.cs" />
+    <Compile Include="Communicate\Data\XmlIndex.cs" />
+    <Compile Include="Communicate\TcpClient.cs" />
+    <Compile Include="Communicate\Udp.cs" />
+    <Compile Include="Control\Metro\Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\Button.Designer.cs">
+      <DependentUpon>Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\CheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\CheckBox.Designer.cs">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\ComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\ComboBox.Designer.cs">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\GroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\GroupBox.Designer.cs">
+      <DependentUpon>GroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\MetroPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\MetroPanel.Designer.cs">
+      <DependentUpon>MetroPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\Panel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\Panel.Designer.cs">
+      <DependentUpon>Panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\ProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\ProgressBar.Designer.cs">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\RadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\RadioButton.Designer.cs">
+      <DependentUpon>RadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\TabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\TabControl.Designer.cs">
+      <DependentUpon>TabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\TrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\TrackBar.Designer.cs">
+      <DependentUpon>TrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Mine\Light.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\Light.Designer.cs">
+      <DependentUpon>Light.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\Label.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\Label.Designer.cs">
+      <DependentUpon>Label.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Mine\MetroButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\MetroButton.Designer.cs">
+      <DependentUpon>MetroButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Mine\Shape.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\Shape.Designer.cs">
+      <DependentUpon>Shape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Mine\TabTitleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\TabTitleButton.Designer.cs">
+      <DependentUpon>TabTitleButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Access.cs" />
+    <Compile Include="Data\Conditions.cs" />
+    <Compile Include="Data\DataExtension.cs" />
+    <Compile Include="Data\DataReadAndWrite.cs" />
+    <Compile Include="Data\Excel.cs" />
+    <Compile Include="Data\SqlCe.cs" />
+    <Compile Include="Data\SqlServer.cs" />
+    <Compile Include="Factory\Boss.cs" />
+    <Compile Include="Meter\AnGui\An9651.cs" />
+    <Compile Include="Meter\AnGui\AnGui.cs" />
+    <Compile Include="Meter\Barcode.cs" />
+    <Compile Include="Meter\Board\I7017.cs" />
+    <Compile Include="Meter\Elect\Elect.cs" />
+    <Compile Include="Meter\Elect\Qz3432b.cs" />
+    <Compile Include="Meter\MCGSModbusRtu.cs" />
+    <Compile Include="Meter\Meter.cs" />
+    <Compile Include="Meter\AnGui\Mn42xx.cs" />
+    <Compile Include="Meter\Plc\MitsubishiFx.cs" />
+    <Compile Include="Meter\ModbusRtu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Best\BestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Best\BestWindow.Designer.cs">
+      <DependentUpon>BestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Metro\MessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Metro\MessageBox.Designer.cs">
+      <DependentUpon>MessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Best\AboutWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Best\AboutWindow.Designer.cs">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\User\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\User\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Metro\StartWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Metro\StartWindow.designer.cs">
+      <DependentUpon>StartWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Metro\BaseWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Metro\BaseWindow.Designer.cs">
+      <DependentUpon>BaseWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Normal\BaseWindowNormal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Normal\BaseWindowNormal.designer.cs">
+      <DependentUpon>BaseWindowNormal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\User\frmChangeUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\User\frmChangeUser.Designer.cs">
+      <DependentUpon>frmChangeUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\User\LoginWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\User\LoginWindow.designer.cs">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Metro\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Metro\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Normal\MessageWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Normal\MessageWindow.designer.cs">
+      <DependentUpon>MessageWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Metro\MoveWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Metro\MoveWindow.Designer.cs">
+      <DependentUpon>MoveWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Normal\Region.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Normal\Region.Designer.cs">
+      <DependentUpon>Region.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Window\Normal\RegionCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\Normal\RegionCreate.Designer.cs">
+      <DependentUpon>RegionCreate.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Control\Metro\ComboBox.resx">
+      <DependentUpon>ComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Metro\MetroPanel.resx">
+      <DependentUpon>MetroPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Mine\Shape.resx">
+      <DependentUpon>Shape.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Best\BestWindow.resx">
+      <DependentUpon>BestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Metro\MessageBox.resx">
+      <DependentUpon>MessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Best\AboutWindow.resx">
+      <DependentUpon>AboutWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Metro\StartWindow.resx">
+      <DependentUpon>StartWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Metro\BaseWindow.resx">
+      <DependentUpon>BaseWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Normal\BaseWindowNormal.resx">
+      <DependentUpon>BaseWindowNormal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\User\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\User\frmChangeUser.resx">
+      <DependentUpon>frmChangeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\User\LoginWindow.resx">
+      <DependentUpon>LoginWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Metro\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Normal\MessageWindow.resx">
+      <DependentUpon>MessageWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Metro\MoveWindow.resx">
+      <DependentUpon>MoveWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Normal\Region.resx">
+      <DependentUpon>Region.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\Normal\RegionCreate.resx">
+      <DependentUpon>RegionCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Factory\Chigo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alert1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DllAndOcx\Data\SqlCe\System.Data.SqlServerCe.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlceca40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlcecompact40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlceer40CN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlceer40EN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlceme40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlceoledb40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlceqp40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DllAndOcx\Data\SqlCe\sqlcese40.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Colors.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
