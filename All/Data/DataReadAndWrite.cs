@@ -49,14 +49,30 @@ namespace All.Data
         /// <param name="dt">要更新的表,dt.TableName不能为空</param>
         /// <returns>更新的行数</returns>
         public abstract int BlockCommand(DataTable dt);
+
+        
         /// <summary>
         /// 登陆到指定数据库
         /// </summary>
-        /// <param name="Address">网络数据库填写IP地址,文件数据库填写路径</param>
-        /// <param name="Data">网络数据库填写数据库名称,文件数据库填写文件名</param>
-        /// <param name="UserName">登陆用户名</param>
-        /// <param name="Password">登陆密码</param>
+        /// <param name="address">网络数据库填写IP地址,文件数据库填写路径</param>
+        /// <param name="dataBase">网络数据库填写数据库名称,文件数据库填写文件名</param>
+        /// <param name="userName">登陆用户名</param>
+        /// <param name="password">登陆密码</param>
         /// <returns>返回是否登陆成功</returns>
+        public bool Login(string address, string dataBase, string userName, string password)
+        {
+            Dictionary<string, string> buff = new Dictionary<string, string>();
+            buff.Add("Address", address);
+            buff.Add("DataBase", dataBase);
+            buff.Add("UserName", userName);
+            buff.Add("Password", password);
+            return Login(buff);
+        }
+        /// <summary>
+        /// 登陆到指定数据库
+        /// </summary>
+        /// <param name="buff">必须包含Address,DataBase,UserName,Password四项</param>
+        /// <returns></returns>
         public abstract bool Login(Dictionary<string,string> buff);
         /// <summary>
         /// 将数据写入到数据库
