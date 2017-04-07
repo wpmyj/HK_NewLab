@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginWindow));
-            this.cbbName = new System.Windows.Forms.ComboBox();
+            this.cbbName = new All.Control.Metro.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new All.Control.Metro.Label();
             this.label2 = new All.Control.Metro.Label();
@@ -67,8 +67,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.label1.Location = new System.Drawing.Point(139, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
@@ -78,8 +78,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.label2.Location = new System.Drawing.Point(151, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
@@ -89,6 +89,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.ForeColor = System.Drawing.Color.Black;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(14, 47);
@@ -100,11 +101,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.Boarder = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.btnCancel.Location = new System.Drawing.Point(281, 151);
             this.btnCancel.MinimumSize = new System.Drawing.Size(10, 10);
             this.btnCancel.Name = "btnCancel";
@@ -116,11 +117,11 @@
             // 
             // btnOk
             // 
-            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.btnOk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOk.BackgroundImage")));
             this.btnOk.Boarder = true;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.btnOk.Location = new System.Drawing.Point(182, 150);
             this.btnOk.MinimumSize = new System.Drawing.Size(10, 10);
             this.btnOk.Name = "btnOk";
@@ -148,8 +149,16 @@
             this.MinimizeBox = false;
             this.Name = "LoginWindow";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户登陆";
             this.Load += new System.EventHandler(this.LoginWindow_Load);
+            this.Controls.SetChildIndex(this.txtPassword, 0);
+            this.Controls.SetChildIndex(this.cbbName, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.Controls.SetChildIndex(this.btnOk, 0);
+            this.Controls.SetChildIndex(this.btnCancel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,7 +167,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbbName;
+        private All.Control.Metro.ComboBox cbbName;
         private System.Windows.Forms.TextBox txtPassword;
         private All.Control.Metro.Label label1;
         private All.Control.Metro.Label label2;

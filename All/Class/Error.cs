@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 namespace All.Class
 {
     public static class Error
@@ -22,7 +22,6 @@ namespace All.Class
             get { return Error.singleError; }
             set { Error.singleError = value; }
         }
-        
         static string errorPath = "";
         /// <summary>
         /// 故障路径
@@ -88,7 +87,10 @@ namespace All.Class
                         exitsErrors.Add(e.Message);
                     }
                     string[] tmpBuff = e.StackTrace.Split('\n');
-                    tmpBuff = tmpBuff[2].Split(new string[] { "位置" }, System.StringSplitOptions.RemoveEmptyEntries);
+                    if (tmpBuff.Length > 2 && tmpBuff[2].IndexOf("位置") >= 0)
+                    {
+                        tmpBuff = tmpBuff[2].Split(new string[] { "位置" }, System.StringSplitOptions.RemoveEmptyEntries);
+                    }
                     if (tmpBuff.Length > 0 && tmpBuff[0].IndexOf("在") >= 0)
                     {
                         value = string.Format("{0}出错模块  ->  {1}\r\n", value, tmpBuff[0].Substring(tmpBuff[0].IndexOf("在")));
@@ -114,7 +116,6 @@ namespace All.Class
                     }
                     value = string.Format("{0}出错原因  ->  {1}\r\n", value, e.ToString());
                     FileIO.Write(ErrorFile, string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n\r\n", DateTime.Now, value), System.IO.FileMode.Append);
-
                 }
             }
         }
@@ -158,10 +159,9 @@ namespace All.Class
                     }
                     exitsErrors.Add(message);
                 }
+                string value = string.Format("出错原因  ->  {0}\r\n", message);
+                FileIO.Write(ErrorFile, string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n\r\n", DateTime.Now, value), System.IO.FileMode.Append);
             }
-            string value = string.Format("出错原因  ->  {0}\r\n", message);
-            FileIO.Write(ErrorFile, string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n\r\n", DateTime.Now, value), System.IO.FileMode.Append);
-
         }
         /// <summary>
         /// 删除指定日期之前的文档

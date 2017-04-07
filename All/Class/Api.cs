@@ -114,7 +114,7 @@ namespace All.Class
         /// <param name="hObj"></param>
         /// <returns></returns>
         [DllImport("gdi32.dll")]
-        public static extern IntPtr DeleteObject(IntPtr hObj);
+        public static extern IntPtr DeleteObject(IntPtr hObject);
 
         /// <summary>
         /// 注销
@@ -146,7 +146,7 @@ namespace All.Class
         /// <param name="filePath"></param>
         /// <returns></returns>
         [DllImport("kernel32")]
-        public static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+        public static extern long WritePrivateProfileString(string lpAppName, string lpKeyName, string val, string lpFileName);
         /// <summary>
         /// 从配置文件读取数据
         /// </summary>

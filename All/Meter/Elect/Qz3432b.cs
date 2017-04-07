@@ -98,7 +98,7 @@ namespace All.Meter
                             case Class.TypeUse.TypeList.Float:
                                 switch (Phase)
                                 {
-                                    case 0:
+                                    case 0://全体数据
                                         //相电压
                                         value.Add((T)(object)(float)(((readBuff[92 + 3] << 24) + (readBuff[93 + 3] << 16) + (readBuff[94 + 3] << 8) + (readBuff[95 + 3] << 0)) * 0.1f));
                                         value.Add((T)(object)(float)(((readBuff[96 + 3] << 24) + (readBuff[97 + 3] << 16) + (readBuff[98 + 3] << 8) + (readBuff[99 + 3] << 0)) * 0.1f));
@@ -137,7 +137,7 @@ namespace All.Meter
                                         //频率
                                         value.Add((T)(object)(float)(((readBuff[104 + 3] << 24) + (readBuff[105 + 3] << 16) + (readBuff[106 + 3] << 8) + (readBuff[107 + 3] << 0)) * 0.01f));
                                         break;
-                                    case 3:
+                                    case 3://只取三相数据
                                         //相电压
                                         value.Add((T)(object)(float)(((readBuff[92 + 3] << 24) + (readBuff[93 + 3] << 16) + (readBuff[94 + 3] << 8) + (readBuff[95 + 3] << 0)) * 0.1f));
                                         value.Add((T)(object)(float)(((readBuff[96 + 3] << 24) + (readBuff[97 + 3] << 16) + (readBuff[98 + 3] << 8) + (readBuff[99 + 3] << 0)) * 0.1f));
@@ -160,7 +160,7 @@ namespace All.Meter
                                         //频率
                                         value.Add((T)(object)(float)(((readBuff[104 + 3] << 24) + (readBuff[105 + 3] << 16) + (readBuff[106 + 3] << 8) + (readBuff[107 + 3] << 0)) * 0.01f));
                                         break;
-                                    case 1:
+                                    case 1://只取单相数据
                                         //相电压
                                         value.Add((T)(object)(float)(((readBuff[92 + 3] << 24) + (readBuff[93 + 3] << 16) + (readBuff[94 + 3] << 8) + (readBuff[95 + 3] << 0)) * 0.1f));
                                         //电流

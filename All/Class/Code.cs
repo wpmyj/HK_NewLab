@@ -80,7 +80,7 @@ namespace All.Class
                     return ErrorList.本地码错误;
                 }
                 string[] ReadValue = Code.Split('-');
-                if (ReadValue == null || ReadValue.Length < 6)
+                if (ReadValue == null || ReadValue.Length != 6)
                 {
                     ErrorStr = "注册码格式不正确";
                     return ErrorList.格式码错误;

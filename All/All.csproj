@@ -75,9 +75,9 @@
     <Compile Include="Class\XmlHelp.cs" />
     <Compile Include="Communicate\Api232.cs" />
     <Compile Include="Communicate\AutoReadAndWrite.cs" />
-    <Compile Include="Communicate\Base\Api232.cs" />
     <Compile Include="Communicate\Base\Base.cs" />
     <Compile Include="Communicate\Base\TcpClient.cs" />
+    <Compile Include="Communicate\Base\TcpServer.cs" />
     <Compile Include="Communicate\Base\Udp.cs" />
     <Compile Include="Communicate\Com.cs" />
     <Compile Include="Communicate\Communicate.cs" />
@@ -197,6 +197,7 @@
     <Compile Include="Meter\AnGui\Mn42xx.cs" />
     <Compile Include="Meter\Plc\MitsubishiFx.cs" />
     <Compile Include="Meter\ModbusRtu.cs" />
+    <Compile Include="Meter\SSMeter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -347,8 +348,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Factory\Chigo\" />
+    <Folder Include="Factory\Midea\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Infomation\说明.docx" />
     <None Include="Resources\question2.png" />
   </ItemGroup>
   <ItemGroup>

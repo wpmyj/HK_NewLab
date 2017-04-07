@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace All.Window
 {
-    public partial class RegionCreate : BaseWindowNormal
+    public partial class RegionCreate : BestWindow
     {
         public RegionCreate()
         {

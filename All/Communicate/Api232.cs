@@ -114,7 +114,6 @@ namespace All.Communicate
                 return 0;
             }
         }
-
         public override void Init(Dictionary<string, string> buff)
         {
             if (buff.ContainsKey("PortName") && buff["PortName"] != null)

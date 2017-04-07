@@ -113,11 +113,8 @@ namespace All.Communicate.Base
             {
                 while (true)
                 {
-
                     len = tcp.Client.ReceiveFrom(buff, ref send);
-
                     OnGetArgs(this, new Base.ReciveArgs(this.RemotHost, this.RemotPort));
-
                     if (readBuff.Count > 65535)
                     {
                         All.Class.Error.Add("TCP缓冲区字节数组过长", Environment.StackTrace);

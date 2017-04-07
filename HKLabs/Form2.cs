@@ -21,8 +21,11 @@ namespace HKLabs
             All.Data.SqlServer sq = new All.Data.SqlServer();
             string sql = "";
             Dictionary<string, string> buff = new Dictionary<string, string>();
-            buff.Add("Address","
-            if (sq.Login("10.46.1.42", "Main", "sa", "123456"))
+            buff.Add("Address", "10.46.1.42");
+            buff.Add("DataBase", "Main");
+            buff.Add("UserName", "sa");
+            buff.Add("Password", "123456");
+            if (sq.Login(buff))
             {
                 using (DataTable dt = sq.Read("select * from tb_dp where LineName='G3'"))
                 {
