@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlServerCe;
 namespace All.Data
 {
-    public class SqlCe:DataReadAndWrite
+    public class SqlCe : All.Data.DataReadAndWrite
     {
         string[] allNeedFileName = new string[]{
             "sqlceca40.dll","sqlcecompact40.dll","sqlceer40CN.dll","sqlceer40EN.dll","sqlceme40.dll",
@@ -20,7 +20,7 @@ namespace All.Data
             }
         }
         static bool CheckSystem = false;
-    
+
         SqlCeConnection conn;
         public override System.Data.Common.DbConnection Conn
         {
@@ -39,8 +39,8 @@ namespace All.Data
                 }
                 if (System.IO.File.Exists(string.Format(".\\{0}", allNeedFileName[i])))
                 {
-                    if((All.Class.FileIO.GetFileMD5(string.Format(".\\DllAndOcx\\Data\\SqlCe\\{0}",allNeedFileName[i]),"0")==
-                        All.Class.FileIO.GetFileMD5(string.Format(".\\{0}",allNeedFileName[i]),"1")))
+                    if ((All.Class.FileIO.GetFileMD5(string.Format(".\\DllAndOcx\\Data\\SqlCe\\{0}", allNeedFileName[i]), "0") ==
+                        All.Class.FileIO.GetFileMD5(string.Format(".\\{0}", allNeedFileName[i]), "1")))
                     {
                         continue;
                     }
@@ -104,7 +104,7 @@ namespace All.Data
             }
             return result;
         }
-        public override bool Login(Dictionary<string,string> buff)// string Address, string Data, string UserName, string Password)
+        public override bool Login(Dictionary<string, string> buff)// string Address, string Data, string UserName, string Password)
         {
             return Login(string.Format("{0}\\{1}", buff["Address"], buff["DataBase"]), buff["UserName"], buff["Password"]);
         }
@@ -244,6 +244,6 @@ namespace All.Data
         {
             throw new NotImplementedException();
         }
-        
+
     }
 }

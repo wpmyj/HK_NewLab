@@ -58,14 +58,14 @@ namespace All.Window
             if (cbbName.SelectedIndex < 0)
             {
                 cbbName.Focus();
-                MessageWindow mw = new MessageWindow("请选择要登陆的用户", "错误", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
+                MessageWindow mw = new MessageWindow("请选择要登陆的用户", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
             if (txtPassword.Text.ToUpper() != password[cbbName.SelectedIndex].ToUpper())
             {
                 txtPassword.Focus();
-                MessageWindow mw = new MessageWindow("对不起,输入的用户名和密码不匹配", "错误", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
+                MessageWindow mw = new MessageWindow("对不起,输入的用户名和密码不匹配", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }

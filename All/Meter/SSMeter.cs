@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 namespace All.Meter
 {
     public class SSMeter:Meter
     {
+        List<ushort> ushortVaulue = new List<ushort>();
+        List<int> intValue = new List<int>();
+        List<string> stringValue = new List<string>();
+        List<float> floatValue = new List<float>();
+        List<double> doubleValue = new List<double>();
+        List<long> longValue = new List<long>();
+        List<byte> byteValue = new List<byte>();
+        List<bool> boolValue = new List<bool>();
+
         Dictionary<string, string> initParm = new Dictionary<string, string>();
 
         public override Dictionary<string, string> InitParm
@@ -30,6 +39,7 @@ namespace All.Meter
                 this.ErrorCount = All.Class.Num.ToInt(initParm["ErrorCount"]);
             }
         }
+        
         public override bool Read<T>(out List<T> value, Dictionary<string, string> parm)
         {
             throw new NotImplementedException();

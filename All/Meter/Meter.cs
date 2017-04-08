@@ -8,7 +8,7 @@ namespace All.Meter
     /// <summary>
     /// 所有仪表的基础类
     /// </summary>
-    public abstract class Meter
+    public abstract class Meter:IDisposable
     {
         /// <summary>
         /// 故障事件
@@ -111,6 +111,20 @@ namespace All.Meter
         /// <param name="InitBuff"></param>
         public abstract void Init(Dictionary<string, string> initParm);
 
+        public void Dispose()
+        { 
+        }
+        /// <summary>
+        /// 关闭当前设备
+        /// </summary>
+        public virtual void Close()
+        { 
+
+        }
+        ~Meter()
+        {
+            this.Close();
+        }
         /// <summary>
         /// 读取数据
         /// </summary>

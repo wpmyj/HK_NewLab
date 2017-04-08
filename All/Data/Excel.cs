@@ -17,7 +17,7 @@ namespace All.Data
         {
             throw new NotImplementedException();
         }
-        public bool Login(string FileName, string UserName, string Password, string Version)
+        public override bool Login(string FileName, string UserName, string Password, string Version)
         {
             lock (lockObject)
             {

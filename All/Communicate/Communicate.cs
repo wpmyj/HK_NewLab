@@ -5,7 +5,7 @@ using System.Text;
 
 namespace All.Communicate
 {
-    public abstract class Communicate:Base.Base
+    public abstract class Communicate:Base.Base,IDisposable
     {
         /// <summary>
         /// 刷新时间
@@ -89,6 +89,10 @@ namespace All.Communicate
             {
                 CommunicateErrorRaise(e);
             }
+        }
+        public void Dispose()
+        {
+            Close();
         }
         ~Communicate()
         {

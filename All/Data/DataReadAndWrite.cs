@@ -7,6 +7,7 @@ using System.Xml;
 using System.Collections;
 namespace All.Data
 {
+    
     /// <summary>
     /// 数据库读写
     /// </summary>
@@ -37,7 +38,7 @@ namespace All.Data
         /// <summary>
         /// 锁
         /// </summary>
-        internal object lockObject = new object();
+        protected object lockObject = new object();
         /// <summary>
         /// 数据库连接
         /// </summary>
@@ -59,7 +60,7 @@ namespace All.Data
         /// <param name="userName">登陆用户名</param>
         /// <param name="password">登陆密码</param>
         /// <returns>返回是否登陆成功</returns>
-        public bool Login(string address, string dataBase, string userName, string password)
+        public virtual bool Login(string address, string dataBase, string userName, string password)
         {
             Dictionary<string, string> buff = new Dictionary<string, string>();
             buff.Add("Address", address);

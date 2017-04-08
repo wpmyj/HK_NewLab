@@ -34,7 +34,7 @@ namespace All.Window
             if (User.AllUser.FindIndex(user => user.UserName == cbbName.Text) >= 0)
             {
                 cbbName.Focus();
-                mw = new MessageWindow("当前要添加的用户已存在,不能添加", "错误!", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
+                mw = new MessageWindow("当前要添加的用户已存在,不能添加", "错误!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
@@ -42,7 +42,7 @@ namespace All.Window
             if (txtPassword.Text != txtPasswordAgain.Text)
             {
                 txtPassword.Focus();
-                mw = new All.Window.MessageWindow("两次输入的密码不一致,请重新输入密码!", "错误", All.Window.MessageWindow.EButton.OK, All.Window.MessageWindow.EIcon.Error);
+                mw = new All.Window.MessageWindow("两次输入的密码不一致,请重新输入密码!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
@@ -52,7 +52,7 @@ namespace All.Window
             us.Level = cbbLevel.Text;
             us.Save();
             User.AllUser.Add(us);
-            mw = new MessageWindow("当前用户已成功添加", "成功", MessageWindow.EButton.OK, MessageWindow.EIcon.Information);
+            mw = new MessageWindow("当前用户已成功添加", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             mw.ShowDialog();
         }
 

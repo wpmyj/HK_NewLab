@@ -40,27 +40,27 @@ namespace All.Window
             if (cbbName.SelectedIndex < 0)
             {
                 cbbName.Focus();
-                mw = new MessageWindow("请选择要修改的用户", "错误", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
+                mw = new MessageWindow("请选择要修改的用户", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
             if (txtOldPassword.Text.ToUpper() != alluser.AllUser[cbbName.SelectedIndex].PassWord.ToUpper())
             {
                 txtPassword.Focus();
-                mw = new MessageWindow("对不起,输入的用户名和原始密码不匹配", "错误", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
+                mw = new MessageWindow("对不起,输入的用户名和原始密码不匹配", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
             if (txtPassword.Text != txtPasswordAgain.Text)
             {
                 txtPassword.Focus();
-                mw = new All.Window.MessageWindow("两次输入的密码不一致,请重新输入密码!", "错误", All.Window.MessageWindow.EButton.OK, All.Window.MessageWindow.EIcon.Error);
+                mw = new All.Window.MessageWindow("两次输入的密码不一致,请重新输入密码!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
             alluser.AllUser[cbbName.SelectedIndex].PassWord = txtPassword.Text;
             alluser.AllUser[cbbName.SelectedIndex].Save();
-            mw = new All.Window.MessageWindow(string.Format("[{0}] 用户已修改成功!", cbbName.Text.Trim()), "成功", All.Window.MessageWindow.EButton.OK, All.Window.MessageWindow.EIcon.Information);
+            mw = new All.Window.MessageWindow(string.Format("[{0}] 用户已修改成功!", cbbName.Text.Trim()), "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             mw.ShowDialog();
         }
 
@@ -69,14 +69,13 @@ namespace All.Window
             MessageWindow mw;
             if (cbbName.Text == "Administrator")
             {
-                mw = new MessageWindow("对不起,[Administratro]用户是默认管理员账户,不能删除", "错误", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
-                mw.ShowDialog();
+                mw = new MessageWindow("对不起,[Administratro]用户是默认管理员账户,不能删除", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (cbbName.SelectedIndex < 0)
             {
                 cbbName.Focus();
-                mw = new MessageWindow("请选择要删除的用户", "错误", MessageWindow.EButton.OK, MessageWindow.EIcon.Error);
+                mw = new MessageWindow("请选择要删除的用户", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mw.ShowDialog();
                 return;
             }
@@ -90,7 +89,7 @@ namespace All.Window
 
             alluser.AllUser.RemoveAt(alluser.AllUser.FindIndex(tmp => tmp.UserName == cbbName.Text));
             All.Class.cUser.Delete(cbbName.Text);
-            mw = new MessageWindow("当前选中用户已成功删除", "成功", MessageWindow.EButton.OK, MessageWindow.EIcon.Information);
+            mw = new MessageWindow("当前选中用户已成功删除", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             mw.ShowDialog();
             Init();
         }

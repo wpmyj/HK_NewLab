@@ -31,22 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DllAndOcx\Data\Excel\NPOI.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>DllAndOcx\Data\Excel\NPOI.OOXML.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>DllAndOcx\Data\Excel\NPOI.OpenXml4Net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SqlServerCe, Version=9.0.242.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DllAndOcx\Data\SqlCe\System.Data.SqlServerCe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
@@ -166,6 +152,12 @@
     <Compile Include="Control\Mine\MetroButton.Designer.cs">
       <DependentUpon>MetroButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\Mine\PicturePlayer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\PicturePlayer.Designer.cs">
+      <DependentUpon>PicturePlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Mine\Shape.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,7 +175,6 @@
     <Compile Include="Data\DataExtension.cs" />
     <Compile Include="Data\DataReadAndWrite.cs" />
     <Compile Include="Data\Excel.cs" />
-    <Compile Include="Data\SqlCe.cs" />
     <Compile Include="Data\SqlServer.cs" />
     <Compile Include="Factory\Boss.cs" />
     <Compile Include="Meter\AnGui\An9651.cs" />
@@ -347,6 +338,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DllAndOcx\" />
     <Folder Include="Factory\Chigo\" />
     <Folder Include="Factory\Midea\" />
   </ItemGroup>
@@ -361,33 +353,6 @@
     <None Include="Resources\Alert1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DllAndOcx\Data\SqlCe\System.Data.SqlServerCe.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlceca40.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlcecompact40.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlceer40CN.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlceer40EN.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlceme40.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlceoledb40.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlceqp40.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DllAndOcx\Data\SqlCe\sqlcese40.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Image\Colors.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

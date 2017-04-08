@@ -14,6 +14,11 @@ namespace All.Window
     /// </summary>
     public partial class MoveWindow : BaseWindow
     {
+        /// <summary>
+        /// 播放屏幕
+        /// </summary>
+        public Screen PlayScreen
+        { get; set; }
         public MoveWindow()
         {
             StartPosition = FormStartPosition.Manual;
