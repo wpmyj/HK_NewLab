@@ -398,5 +398,9 @@ namespace All.Communicate
             InitCommunite(buff);
             Send<T>(value);
         }
+        protected override void OnGetArgs(object sender, ReciveArgs reciveArgs)
+        {
+            base.OnGetArgs(this, reciveArgs);
+        }
     }
 }

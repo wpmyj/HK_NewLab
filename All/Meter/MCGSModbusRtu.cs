@@ -52,12 +52,14 @@ namespace All.Meter
             int end = 0;
             byte[] sendBuff = new byte[12];
             int readLen = 0;
-            if (!parm.ContainsKey("Start"))
+            if (parm.ContainsKey("Start"))
             {
-                All.Class.Error.Add(string.Format("{0}:读取数据不包含起始点", this.Text), Environment.StackTrace);
-                return false;
+                start = All.Class.Num.ToInt(parm["Start"]);
             }
-            start = All.Class.Num.ToInt(parm["Start"]);
+            if (parm.ContainsKey("Address"))
+            {
+                start = All.Class.Num.ToInt(parm["Address"]);
+            }
             if (start < 1)
             {
                 All.Class.Error.Add(string.Format("{0}:读取数据点不能从小于0的点开始", this.Text), Environment.StackTrace);

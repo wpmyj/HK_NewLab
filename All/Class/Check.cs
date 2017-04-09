@@ -120,15 +120,26 @@ namespace All.Class
         /// 求校验和
         /// </summary>
         /// <param name="buff">求校验和字节</param>
+        /// <param name="start">校验和起始位</param>
+        /// <param name="len">校验和长度</param>
+        /// <returns>返回校验和低字节</returns>
+        public static byte SumCheck(byte[] buff, int start, int len)
+        {
+            byte result = 0;
+            byte sumLow = 0, sumHigh = 0;
+            SumCheck(buff, start, len, out sumLow, out sumHigh);
+            result = sumLow;
+            return result;
+        }
+        /// <summary>
+        /// 求校验和
+        /// </summary>
+        /// <param name="buff">求校验和字节</param>
         /// <param name="len">校验和长度</param>
         /// <returns>返回校验和低字节</returns>
         public static byte SumCheck(byte[] buff, int len)
         {
-            byte result = 0;
-            byte sumLow = 0, sumHigh = 0;
-            SumCheck(buff, 0, len, out sumLow, out sumHigh);
-            result = sumLow;
-            return result;
+            return SumCheck(buff, 0, len);
         }
         /// <summary>
         /// 求校验和
@@ -231,5 +242,6 @@ namespace All.Class
             }
             return rg.IsMatch(str);
         }
+
     }
 }

@@ -15,9 +15,42 @@ namespace HKLabs
         {
             InitializeComponent();
         }
+        All.Communicate.Udp udp1 = new All.Communicate.Udp();
+        All.Communicate.Udp udp2 = new All.Communicate.Udp();
+        All.Communicate.Udp udp3 = new All.Communicate.Udp();
+        All.Meter.SSRead read1 = new All.Meter.SSRead();
+        All.Meter.SSRead read2 = new All.Meter.SSRead();
+        All.Meter.SSWrite write1 = new All.Meter.SSWrite();
         private void Form1_Load(object sender, EventArgs e)
         {
-            //this.Visible = false;
+            Dictionary<string, string> buff = new Dictionary<string, string>();
+            buff.Add("LocalPort", "9999");
+            buff.Add("RemotPort", "8888");
+            buff.Add("RemotHost", "127.0.0.1");
+            udp1.Init(buff);
+            udp1.Open();
+            buff = new Dictionary<string, string>();
+            buff.Add("LocalPort", "8888");
+            buff.Add("RemotPort", "9999");
+            buff.Add("RemotHost", "127.0.0.1");
+            udp2.Init(buff);
+            udp2.Open();
+            buff = new Dictionary<string, string>();
+            buff.Add("LocalPort", "7777");
+            buff.Add("RemotPort", "9999");
+            buff.Add("RemotHost", "127.0.0.1");
+            udp3.Init(buff);
+            udp3.Open();
+            buff = new Dictionary<string, string>();
+            buff.Add("String", "10");
+            read1.Parent = udp1;
+            read1.Init(buff);
+            write1.Parent = udp2;
+            write1.Init(buff);
+            read2.Parent = udp3;
+            read2.Init(buff);
+            new System.Threading.Thread(() => timer1_Tick(timer1, new EventArgs())) { IsBackground = true }.Start();
+
             foreach (string ss in Enum.GetNames(typeof(All.Class.Style.BackColors)))
             {
                 listBox1.Items.Add(ss);
@@ -69,13 +102,37 @@ namespace HKLabs
             All.Window.Region rr = new All.Window.Region();
             rr.Show();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            All.Class.Reflex<All.Data.DataReadAndWrite> sql = new All.Class.Reflex<All.Data.DataReadAndWrite>("All.Data.SqlCe", "All.Data.SqlCe");
-            All.Data.DataReadAndWrite sql2 = sql.Get();
-            sql2.Login("C:\\", "1.sdf", "", "");
-            DataTable dt = sql2.Read("select * from tableA");
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Dictionary<string, string> parm = new Dictionary<string, string>();
+            parm.Add("RemotPort", "7777");
+            int i = 0;
+            string s1 = "", s2 = "";
+            while (true)
+            {
+                int start = Environment.TickCount;
+                parm["RemotPort"] = "7777";
+                write1.Parent.InitCommunite(parm);
+                write1.WriteInternal<string>(string.Format("{0}", i++), 0);
+                parm["RemotPort"] = "9999";
+                write1.Parent.InitCommunite(parm);
+                write1.WriteInternal<string>(string.Format("{0}", i), 0);
+
+                read1.Read<string>(out s1, 0);
+                read2.Read<string>(out s2, 0);
+
+                label1.SetText(string.Format("{0}_{1}", s1, s2));
+                this.CrossThreadDo(() =>
+                {
+                    textBox1.Text = string.Format("{0:F0}", Environment.TickCount - start );
+                    dateTime1.Value = DateTime.Now;
+                });
+                System.Threading.Thread.Sleep(100);
+
+            }
         }
     }
 }

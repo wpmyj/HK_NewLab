@@ -96,14 +96,14 @@ namespace All.Communicate
         }
         protected override void OnGetArgs(object sender, Base.Base.ReciveArgs reciveArgs)
         {
-            base.OnGetArgs(sender, reciveArgs);
+            base.OnGetArgs(this, reciveArgs);
         }
         public override void Read<T>(out T value)
         {
             value = default(T);
             if (udpClient == null || !udpClient.IsOpen)
             {
-                AddError(new Exception(string.Format("{0}:Udp.Read Error,serialPort is null or it's not open", this.Text)));
+                AddError(new Exception(string.Format("{0}:Udp.Read Error,Udp is null or it's not open", this.Text)));
                 return;
             }
             int readLen = DataRecive;
@@ -127,7 +127,7 @@ namespace All.Communicate
         {
             if (udpClient == null || !udpClient.IsOpen)
             {
-                AddError(new Exception(string.Format("{0}:Udp.Send Error,serialPort is null or it's not open", this.Text)));
+                AddError(new Exception(string.Format("{0}:Udp.Send Error,Udp is null or it's not open", this.Text)));
                 return;
             }
             udpClient.DiscardBuffer();

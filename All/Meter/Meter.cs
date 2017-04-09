@@ -110,7 +110,16 @@ namespace All.Meter
         /// </summary>
         /// <param name="InitBuff"></param>
         public abstract void Init(Dictionary<string, string> initParm);
-
+        /// <summary>
+        /// 初始化设备
+        /// </summary>
+        /// <param name="initParm">设备初始化参数</param>
+        /// <param name="parent">通讯父类</param>
+        public virtual void Init(Dictionary<string, string> initParm, Communicate.Communicate parent)
+        {
+            this.Parent = parent;
+            Init(initParm);
+        }
         public void Dispose()
         { 
         }
@@ -264,7 +273,7 @@ namespace All.Meter
                     do
                     {
                         readLen = this.Parent.DataRecive;
-                        System.Threading.Thread.Sleep(50);
+                        System.Threading.Thread.Sleep(30);
                         if ((Environment.TickCount - startTime) > TimeOut)
                         {
                             timeOut = true;
@@ -282,7 +291,7 @@ namespace All.Meter
                         do
                         {
                             readLen = this.Parent.DataRecive;
-                            System.Threading.Thread.Sleep(50);
+                            System.Threading.Thread.Sleep(30);
                             if ((Environment.TickCount - startTime) > TimeOut)
                             {
                                 timeOut = true;
@@ -309,7 +318,7 @@ namespace All.Meter
                 }
                 else//读取数据OK
                 {
-                    if (len > 0)//实际长度不为0，主要判断 读取条码枪时，长度为0，通讯也正常的情况
+                    if (readLen > 0)//实际长度不为0，主要判断 读取条码枪时，长度为0，通讯也正常的情况
                     {
                         byte[] readTmpBuff;
                         this.Parent.Read<byte[]>(out readTmpBuff);

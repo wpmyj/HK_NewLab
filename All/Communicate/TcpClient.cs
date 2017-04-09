@@ -92,7 +92,7 @@ namespace All.Communicate
         }
         protected override void OnGetArgs(object sender, Base.Base.ReciveArgs reciveArgs)
         {
-            base.OnGetArgs(sender, reciveArgs);
+            base.OnGetArgs(this, reciveArgs);
         }
         public override void Read<T>(out T value)
         {

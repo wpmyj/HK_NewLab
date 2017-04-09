@@ -90,6 +90,10 @@ namespace All.Communicate
                 CommunicateErrorRaise(e);
             }
         }
+        public Communicate()
+        {
+            this.Meters = new List<Meter.Meter>();
+        }
         public void Dispose()
         {
             Close();
