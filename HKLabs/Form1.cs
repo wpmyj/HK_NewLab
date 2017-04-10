@@ -72,10 +72,10 @@ namespace HKLabs
 
         private void button3_Click(object sender, EventArgs e)
         {
-            All.Class.Reflex<All.Data.DataReadAndWrite> sql = new All.Class.Reflex<All.Data.DataReadAndWrite>("All.Data.SqlCe", "All.Data.SqlCe");
-            All.Data.DataReadAndWrite sql2 = sql.Get();
-            sql2.Login("C:\\", "1.sdf", "", "");
-            DataTable dt = sql2.Read("select * from tableA");
+            //All.Class.Reflex<All.Data.DataReadAndWrite> sql = new All.Class.Reflex<All.Data.DataReadAndWrite>("All.Data.SqlCe", "All.Data.SqlCe");
+            //All.Data.DataReadAndWrite sql2 = sql.Get();
+            //sql2.Login("C:\\", "1.sdf", "", "");
+            //DataTable dt = sql2.Read("select * from tableA");
         }
     }
 }
