@@ -11,6 +11,7 @@ namespace All.Control.Mine
 {
     public partial class Num : System.Windows.Forms.Control
     {
+        Seven[] seven;
         float value = 8888.88f;
         /// <summary>
         /// 显示值
@@ -20,7 +21,7 @@ namespace All.Control.Mine
         public float Value
         {
             get { return this.value; }
-            set { this.value = value; }
+            set { this.value = value; flush(); }
         }
         bool point = true;
         /// <summary>
@@ -31,7 +32,7 @@ namespace All.Control.Mine
         public bool Point
         {
             get { return point; }
-            set { point = value; }
+            set { point = value; Init(); }
         }
         bool shadow = true;
         /// <summary>
@@ -42,18 +43,14 @@ namespace All.Control.Mine
         public bool Shadow
         {
             get { return shadow; }
-            set { shadow = value; }
-        }
-        int thickness = 4;
-        /// <summary>
-        /// 边框粗细
-        /// </summary>
-        [Description("边框粗细")]
-        [Category("Shuai")]
-        public int Thickness
-        {
-            get { return thickness; }
-            set { thickness = value; }
+            set
+            {
+                shadow = value;
+                for (int i = 0; i < seven.Length; i++)
+                {
+                    seven[i].Shardow = value;
+                }
+            }
         }
         int maxLen = 6;
         /// <summary>
@@ -64,7 +61,7 @@ namespace All.Control.Mine
         public int MaxLen
         {
             get { return maxLen; }
-            set { maxLen = value; }
+            set { maxLen = value; Init(); }
         }
         bool symbol = false;
         /// <summary>
@@ -75,7 +72,7 @@ namespace All.Control.Mine
         public bool Symbol
         {
             get { return symbol; }
-            set { symbol = value; }
+            set { symbol = value; flush(); }
         }
         /// <summary>
         /// 字体颜色
@@ -84,13 +81,14 @@ namespace All.Control.Mine
         [Category("Shuai")]
         public override System.Drawing.Color ForeColor
         {
-            get
-            {
-                return base.ForeColor;
-            }
+            get { return base.ForeColor; }
             set
             {
                 base.ForeColor = value;
+                for (int i = 0; i < seven.Length; i++)
+                {
+                    seven[i].ForeColor = value;
+                }
             }
         }
         /// <summary>
@@ -100,13 +98,14 @@ namespace All.Control.Mine
         [Category("Shuai")]
         public override System.Drawing.Color BackColor
         {
-            get
-            {
-                return base.BackColor;
-            }
+            get { return base.BackColor; }
             set
             {
                 base.BackColor = value;
+                for (int i = 0; i < seven.Length; i++)
+                {
+                    seven[i].BackColor = value;
+                }
             }
         }
         Bitmap backImage;
@@ -121,67 +120,34 @@ namespace All.Control.Mine
             Init();
             base.OnSizeChanged(e);
         }
-        protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs pevent)
-        {
-            //base.OnPaintBackground(pevent);
-        }
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-        {
-            if (backImage == null)
-            {
-                Init();
-            }
-            using (Graphics g = Graphics.FromImage(backImage))
-            {
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.Clear(this.BackColor);
-
-            }
-            e.Graphics.DrawImageUnscaledAndClipped(backImage, this.DisplayRectangle);
+        private void flush()
+        { 
         }
         private void Init()
         {
-            //if (seven != null)
-            //{
-            //    for (int i = 0; i < seven.Length; i++)
-            //    {
-            //        seven[i].Dispose();
-            //    }
-            //}
-            //seven = new Seven[formatValue.Length];
-            //for (int i = 0; i < seven.Length; i++)
-            //{
-            //    seven[i] = new Seven();
-            //    seven[i].Width = this.Width / seven.Length - 5;
-            //    seven[i].Height = this.Height;
-            //    seven[i].Left = this.Width / seven.Length * i;
-            //    seven[i].FontSize = this.Height / 10;
-            //    seven[i].FontSpace = this.Height / 30;
-            //    seven[i].Top = 0;
-            //    seven[i].Shardow = false;
-            //    switch (formatValue.Substring(i, 1))
-            //    {
-            //        case "y":
-            //        case "M":
-            //        case "d":
-            //        case "H":
-            //        case "m":
-            //        case "s":
-            //            seven[i].Simplor = Seven.simplorList.Value;
-            //            break;
-            //        case "-":
-            //            seven[i].Simplor = Seven.simplorList.Del;
-            //            break;
-            //        case ":":
-            //            seven[i].Simplor = Seven.simplorList.DoublePoint;
-            //            break;
-            //        default:
-            //            seven[i].Simplor = Seven.simplorList.Null;
-            //            break;
-            //    }
-            //    this.Controls.Add(seven[i]);
-            //}
+            if (seven != null)
+            {
+                for (int i = 0; i < seven.Length; i++)
+                {
+                    seven[i].Dispose();
+                }
+            }
+            seven = new Seven[maxLen + 1 + (point ? 1 : 0)];
+            for (int i = 0; i < seven.Length; i++)
+            {
+                seven[i] = new Seven();
+                seven[i].Width = this.Width / seven.Length - 5;
+                seven[i].Height = this.Height;
+                seven[i].Left = this.Width / seven.Length * i;
+                seven[i].FontSize = this.Height / 10;
+                seven[i].FontSpace = this.Height / 30;
+                seven[i].Top = 0;
+                seven[i].Shardow = this.shadow;
+                seven[i].BackColor = this.BackColor;
+                seven[i].ForeColor = this.ForeColor;
+                this.Controls.Add(seven[i]);
+            }
+            flush();
         }
 
     }

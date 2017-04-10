@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            All.Control.Mine.MetroButton.Sence sence1 = new All.Control.Mine.MetroButton.Sence();
-            All.Control.Mine.MetroButton.Sence sence2 = new All.Control.Mine.MetroButton.Sence();
-            All.Control.Mine.MetroButton.Content content1 = new All.Control.Mine.MetroButton.Content();
-            All.Control.Mine.MetroButton.Content content2 = new All.Control.Mine.MetroButton.Content();
+            All.Control.Mine.MetroButton.Sence sence5 = new All.Control.Mine.MetroButton.Sence();
+            All.Control.Mine.MetroButton.Sence sence6 = new All.Control.Mine.MetroButton.Sence();
+            All.Control.Mine.MetroButton.Content content5 = new All.Control.Mine.MetroButton.Content();
+            All.Control.Mine.MetroButton.Content content6 = new All.Control.Mine.MetroButton.Content();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new All.Control.Metro.Label();
@@ -53,13 +53,14 @@
             this.radioButton1 = new All.Control.Metro.RadioButton();
             this.tabControl1 = new All.Control.Metro.TabControl(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabTitleButton1 = new All.Control.Mine.TabTitleButton();
-            this.metroButton1 = new All.Control.Mine.MetroButton();
             this.panel1 = new All.Control.Metro.Panel(this.components);
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new All.Control.Metro.Panel(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.metroPanel2 = new All.Control.Metro.MetroPanel();
+            this.tabTitleButton1 = new All.Control.Mine.TabTitleButton();
+            this.metroButton1 = new All.Control.Mine.MetroButton();
+            this.plate1 = new All.Control.Mine.Plate();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -82,7 +83,7 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 14;
-            this.listBox2.Location = new System.Drawing.Point(655, 92);
+            this.listBox2.Location = new System.Drawing.Point(777, 92);
             this.listBox2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(139, 354);
@@ -173,12 +174,12 @@
             // dateTime1
             // 
             this.dateTime1.BackColor = System.Drawing.SystemColors.Control;
-            this.dateTime1.ForeColor = System.Drawing.Color.Red;
+            this.dateTime1.ForeColor = System.Drawing.Color.Fuchsia;
             this.dateTime1.Format = All.Control.Mine.DateTime.FormatList.日期和时间;
             this.dateTime1.Location = new System.Drawing.Point(227, 11);
             this.dateTime1.Name = "dateTime1";
             this.dateTime1.Shardow = false;
-            this.dateTime1.Size = new System.Drawing.Size(470, 45);
+            this.dateTime1.Size = new System.Drawing.Size(481, 62);
             this.dateTime1.TabIndex = 8;
             this.dateTime1.Text = "dateTime1";
             this.dateTime1.Value = new System.DateTime(2017, 4, 9, 22, 23, 8, 425);
@@ -186,7 +187,7 @@
             // trackBar1
             // 
             this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(359, 63);
+            this.trackBar1.Location = new System.Drawing.Point(359, 76);
             this.trackBar1.MaxiColor = System.Drawing.Color.Red;
             this.trackBar1.Maximum = 10;
             this.trackBar1.MiniColor = System.Drawing.Color.Lime;
@@ -301,55 +302,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(219, 83);
+            this.tabPage1.Size = new System.Drawing.Size(248, 83);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(219, 83);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabTitleButton1
-            // 
-            this.tabTitleButton1.Check = false;
-            this.tabTitleButton1.Location = new System.Drawing.Point(465, 377);
-            this.tabTitleButton1.MinimumSize = new System.Drawing.Size(10, 10);
-            this.tabTitleButton1.Name = "tabTitleButton1";
-            this.tabTitleButton1.Size = new System.Drawing.Size(159, 69);
-            this.tabTitleButton1.TabIndex = 18;
-            this.tabTitleButton1.Text = "tabTitleButton1";
-            // 
-            // metroButton1
-            // 
-            sence1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            sence1.DelayTime = 3000;
-            this.metroButton1.First = sence1;
-            this.metroButton1.Location = new System.Drawing.Point(655, 451);
-            this.metroButton1.MinimumSize = new System.Drawing.Size(10, 10);
-            this.metroButton1.Name = "metroButton1";
-            sence2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            sence2.DelayTime = 3000;
-            this.metroButton1.Second = sence2;
-            this.metroButton1.SenceNow = All.Control.Mine.MetroButton.ShowList.Second;
-            this.metroButton1.Size = new System.Drawing.Size(229, 120);
-            this.metroButton1.TabIndex = 19;
-            this.metroButton1.Text = "metroButton1";
-            content1.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold);
-            content1.ForeColor = System.Drawing.Color.Red;
-            content1.Text = "标题文字";
-            this.metroButton1.Title = content1;
-            content2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
-            content2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            content2.Text = "文本说明字符";
-            this.metroButton1.Value = content2;
             // 
             // panel1
             // 
@@ -359,8 +315,19 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(213, 77);
+            this.panel1.Size = new System.Drawing.Size(242, 77);
             this.panel1.TabIndex = 20;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(248, 83);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -370,7 +337,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(213, 77);
+            this.panel2.Size = new System.Drawing.Size(242, 77);
             this.panel2.TabIndex = 21;
             // 
             // tabPage3
@@ -395,11 +362,68 @@
             this.metroPanel2.Size = new System.Drawing.Size(242, 77);
             this.metroPanel2.TabIndex = 15;
             // 
+            // tabTitleButton1
+            // 
+            this.tabTitleButton1.Check = false;
+            this.tabTitleButton1.Location = new System.Drawing.Point(465, 377);
+            this.tabTitleButton1.MinimumSize = new System.Drawing.Size(10, 10);
+            this.tabTitleButton1.Name = "tabTitleButton1";
+            this.tabTitleButton1.Size = new System.Drawing.Size(159, 69);
+            this.tabTitleButton1.TabIndex = 18;
+            this.tabTitleButton1.Text = "tabTitleButton1";
+            // 
+            // metroButton1
+            // 
+            sence5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            sence5.DelayTime = 3000;
+            this.metroButton1.First = sence5;
+            this.metroButton1.Location = new System.Drawing.Point(655, 451);
+            this.metroButton1.MinimumSize = new System.Drawing.Size(10, 10);
+            this.metroButton1.Name = "metroButton1";
+            sence6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            sence6.DelayTime = 3000;
+            this.metroButton1.Second = sence6;
+            this.metroButton1.SenceNow = All.Control.Mine.MetroButton.ShowList.Second;
+            this.metroButton1.Size = new System.Drawing.Size(229, 120);
+            this.metroButton1.TabIndex = 19;
+            this.metroButton1.Text = "metroButton1";
+            content5.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Bold);
+            content5.ForeColor = System.Drawing.Color.Red;
+            content5.Text = "标题文字";
+            this.metroButton1.Title = content5;
+            content6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            content6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            content6.Text = "文本说明字符";
+            this.metroButton1.Value = content6;
+            // 
+            // plate1
+            // 
+            this.plate1.ArrowColor = System.Drawing.Color.Red;
+            this.plate1.ColorPart1 = System.Drawing.Color.Yellow;
+            this.plate1.ColorPart2 = System.Drawing.Color.Green;
+            this.plate1.ColorPart3 = System.Drawing.Color.Red;
+            this.plate1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plate1.Format = "f1";
+            this.plate1.Location = new System.Drawing.Point(514, 96);
+            this.plate1.Max = 400D;
+            this.plate1.Min = 0D;
+            this.plate1.Name = "plate1";
+            this.plate1.Part = 10;
+            this.plate1.PartValue1 = 3;
+            this.plate1.PartValue2 = 6;
+            this.plate1.PlateColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.plate1.Size = new System.Drawing.Size(237, 237);
+            this.plate1.TabIndex = 21;
+            this.plate1.Text = "plate1";
+            this.plate1.Title = "电压(V)";
+            this.plate1.Value = 220.7D;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 670);
+            this.Controls.Add(this.plate1);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.tabTitleButton1);
             this.Controls.Add(this.tabControl1);
@@ -464,6 +488,7 @@
         private All.Control.Metro.Panel panel2;
         private System.Windows.Forms.TabPage tabPage3;
         private All.Control.Metro.MetroPanel metroPanel2;
+        private All.Control.Mine.Plate plate1;
     }
 }
 

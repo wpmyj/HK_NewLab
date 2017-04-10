@@ -169,6 +169,12 @@
     <Compile Include="Control\Mine\PicturePlayer.Designer.cs">
       <DependentUpon>PicturePlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\Mine\Plate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\Plate.Designer.cs">
+      <DependentUpon>Plate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Mine\Seven.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -193,7 +199,9 @@
     <Compile Include="Data\DataReadAndWrite.cs" />
     <Compile Include="Data\Excel.cs" />
     <Compile Include="Data\SqlServer.cs" />
-    <Compile Include="Factory\Boss.cs" />
+    <Compile Include="Factory\Boss\Boss.cs" />
+    <Compile Include="Factory\Factory.cs" />
+    <Compile Include="Factory\Midea\水利模块机.cs" />
     <Compile Include="Meter\AnGui\An9651.cs" />
     <Compile Include="Meter\AnGui\AnGui.cs" />
     <Compile Include="Meter\Barcode.cs" />
@@ -361,7 +369,6 @@
   <ItemGroup>
     <Folder Include="DllAndOcx\" />
     <Folder Include="Factory\Chigo\" />
-    <Folder Include="Factory\Midea\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Infomation\说明.docx" />

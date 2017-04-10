@@ -8,6 +8,9 @@ namespace All.Meter.SSMeter
     [Serializable]
     public class SSMeter
     {
+        /// <summary>
+        /// 返回数据接收结果类型
+        /// </summary>
         public class ResultStyle
         {
             /// <summary>
@@ -67,6 +70,9 @@ namespace All.Meter.SSMeter
                 return result;
             }
         }
+        /// <summary>
+        /// 发送数据类型
+        /// </summary>
         public class DataStyle
         {
             /// <summary>
