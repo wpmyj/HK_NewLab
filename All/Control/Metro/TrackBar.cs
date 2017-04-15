@@ -342,7 +342,8 @@ namespace All.Control.Metro
                     if (!mouseInScroll)
                     {
                         mouseInScroll = true;
-                        this.Invalidate();
+                        this.Cursor = Cursors.Hand;
+                        //this.Invalidate();
                     }
                 }
                 else
@@ -350,7 +351,8 @@ namespace All.Control.Metro
                     if (mouseInScroll)
                     {
                         mouseInScroll = false;
-                        this.Invalidate();
+                        this.Cursor = Cursors.Default;
+                        //this.Invalidate();
                     }
                 }
             }
@@ -387,13 +389,13 @@ namespace All.Control.Metro
                         case System.Windows.Forms.Orientation.Horizontal:
                             fCur = (this.Width - this.Height) * value / (this.maximum - this.minimum);
                             scroll = new Rectangle(fCur, 0, this.Height, this.Height);
-                            min = new Rectangle(0, 0, fCur, this.Height);
-                            max = new Rectangle(fCur, 0, this.Width - fCur, this.Height);
+                            min = new Rectangle(0, 0, fCur + this.Height / 2, this.Height);
+                            max = new Rectangle(fCur + this.Height / 2, 0, this.Width - fCur - this.Height / 2, this.Height);
                             break;
                         case System.Windows.Forms.Orientation.Vertical:
                             fCur = (this.Height - this.Width) * value / (this.maximum - this.minimum);
-                            min = new Rectangle(0, 0, this.Width, fCur);
-                            max = new Rectangle(0, fCur, this.Width, this.Height - fCur);
+                            min = new Rectangle(0, 0, this.Width, fCur + this.Width / 2);
+                            max = new Rectangle(0, fCur + this.Width / 2, this.Width, this.Height - fCur - this.Width / 2);
                             scroll = new Rectangle(0, fCur, this.Width, this.Width);
                             break;
                     }
@@ -412,20 +414,20 @@ namespace All.Control.Metro
                                 break;
                         }
                     }
-                    if (mouseInScroll)
-                    {
-                        switch (All.Class.Style.Back)
-                        {
-                            case Class.Style.BackColors.White:
-                                tmpScrollColor = ControlPaint.Dark(tmpScrollColor);
-                                break;
-                            case Class.Style.BackColors.Black:
-                                tmpScrollColor = ControlPaint.Light(tmpScrollColor);
-                                break;
-                        }
-                        tmpMiniColor = ControlPaint.LightLight(tmpMiniColor);
-                        tmpMaxiColor = ControlPaint.LightLight(tmpMaxiColor);
-                    }
+                    //if (mouseInScroll)
+                    //{
+                    //    switch (All.Class.Style.Back)
+                    //    {
+                    //        case Class.Style.BackColors.White:
+                    //            tmpScrollColor = ControlPaint.Dark(tmpScrollColor);
+                    //            break;
+                    //        case Class.Style.BackColors.Black:
+                    //            tmpScrollColor = ControlPaint.Light(tmpScrollColor);
+                    //            break;
+                    //    }
+                    //    tmpMiniColor = ControlPaint.LightLight(tmpMiniColor);
+                    //    tmpMaxiColor = ControlPaint.LightLight(tmpMaxiColor);
+                    //}
                     g.FillRectangle(new SolidBrush(tmpMaxiColor), max);
                     g.FillRectangle(new SolidBrush(tmpMiniColor), min);
                     //画滑动块

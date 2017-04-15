@@ -72,7 +72,7 @@ namespace All.Factory
         {
             if (thRead != null)
             {
-                thRead.Join(300);
+                thRead.Join(500);
                 thRead.Abort();
                 thRead = null;
             }

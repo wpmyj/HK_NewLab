@@ -61,6 +61,16 @@ namespace All.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Alter {
+            get {
+                object obj = ResourceManager.GetObject("Alter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Icon Colors {
@@ -73,9 +83,9 @@ namespace All.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap error1 {
+        internal static System.Drawing.Bitmap Error {
             get {
-                object obj = ResourceManager.GetObject("error1", resourceCulture);
+                object obj = ResourceManager.GetObject("Error", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +93,9 @@ namespace All.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap information {
+        internal static System.Drawing.Bitmap Infomation {
             get {
-                object obj = ResourceManager.GetObject("information", resourceCulture);
+                object obj = ResourceManager.GetObject("Infomation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +103,9 @@ namespace All.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap question2 {
+        internal static System.Drawing.Bitmap Question {
             get {
-                object obj = ResourceManager.GetObject("question2", resourceCulture);
+                object obj = ResourceManager.GetObject("Question", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

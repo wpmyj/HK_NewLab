@@ -35,16 +35,9 @@ namespace All.Control.Metro
             All.Class.Style.AllStyle.Remove(this);
             base.OnHandleDestroyed(e);
         }
-        public void SetText(string value)
+        protected override void WndProc(ref System.Windows.Forms.Message m)
         {
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new Action<string>(SetText), value);
-            }
-            else
-            {
-                this.Text = value;
-            }
+            base.WndProc(ref m);
         }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="Class\Environment.cs" />
     <Compile Include="Class\Error.cs" />
     <Compile Include="Class\FileIO.cs" />
+    <Compile Include="Class\GDIHelp.cs" />
     <Compile Include="Class\HardInfo.cs" />
     <Compile Include="Class\InfoAttribute.cs" />
     <Compile Include="Class\Net.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Communicate\Data\XmlIndex.cs" />
     <Compile Include="Communicate\TcpClient.cs" />
     <Compile Include="Communicate\Udp.cs" />
+    <Compile Include="Control\Interface\ControlExtension.cs" />
     <Compile Include="Control\Metro\Button.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,6 +98,12 @@
     </Compile>
     <Compile Include="Control\Metro\GroupBox.Designer.cs">
       <DependentUpon>GroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\ListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\ListBox.Designer.cs">
+      <DependentUpon>ListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\Metro\MetroPanel.cs">
       <SubType>UserControl</SubType>
@@ -126,6 +134,12 @@
     </Compile>
     <Compile Include="Control\Metro\TabControl.Designer.cs">
       <DependentUpon>TabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Metro\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\Metro\TextBox.Designer.cs">
+      <DependentUpon>TextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\Metro\TrackBar.cs">
       <SubType>Component</SubType>
@@ -308,6 +322,7 @@
     <Compile Include="Window\Normal\RegionCreate.Designer.cs">
       <DependentUpon>RegionCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Window\WindowExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Control\Metro\ComboBox.resx">
@@ -381,6 +396,11 @@
     <None Include="Resources\Alert1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Infomation\Windows消息常量.txt" />
+    <None Include="Image\Infomation.png" />
+    <None Include="Image\Question.png" />
+    <None Include="Image\Error.png" />
+    <None Include="Image\Alter.png" />
     <Content Include="Image\Colors.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace All.Control.Metro
 {
-    public partial class MetroPanel :System.Windows.Forms.UserControl, All.Class.Style.ChangeTheme
+    public partial class ListBox : System.Windows.Forms.ListBox,All.Class.Style.ChangeTheme
     {
-        public MetroPanel()
+        public ListBox()
         {
             InitializeComponent();
         }
         public void ChangeFront(All.Class.Style.FrontColors color)
-        {
-            this.Invalidate();
-        }
+        { }
         public void ChangeBack(All.Class.Style.BackColors color)
         {
             this.BackColor = All.Class.Style.BackColor;
             this.ForeColor = All.Class.Style.FontColor;
             this.Invalidate();
+        }
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
         }
         protected override void OnHandleCreated(EventArgs e)
         {
@@ -38,11 +38,7 @@ namespace All.Control.Metro
         }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
-            if (this.BorderStyle == System.Windows.Forms.BorderStyle.FixedSingle)
-            {
-                e.Graphics.DrawRectangle(All.Class.Style.BoardPen, new System.Drawing.Rectangle(0, 0, Width - 3, Height - 3));
-            }
-            base.OnPaint(e);
+            e.Graphics.DrawRectangle(All.Class.Style.BoardPen, 0, 0, this.Width - 1, this.Height - 1);
         }
     }
 }

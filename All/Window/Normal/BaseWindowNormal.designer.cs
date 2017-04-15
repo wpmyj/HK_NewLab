@@ -59,7 +59,7 @@
             // picIcon
             // 
             this.picIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.picIcon.Image = global::All.Properties.Resources.information;
+            this.picIcon.Image = global::All.Properties.Resources.Error;
             this.picIcon.Location = new System.Drawing.Point(11, 7);
             this.picIcon.Name = "picIcon";
             this.picIcon.Size = new System.Drawing.Size(20, 20);

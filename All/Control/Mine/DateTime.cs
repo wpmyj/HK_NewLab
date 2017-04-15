@@ -127,6 +127,10 @@ namespace All.Control.Mine
         void All.Class.Style.ChangeTheme.ChangeBack(All.Class.Style.BackColors backColor)
         {
             this.BackColor = All.Class.Style.BackColor;
+            for (int i = 0; i < seven.Length; i++)
+            {
+                seven[i].BackColor = this.BackColor;
+            }
         }
         void All.Class.Style.ChangeTheme.ChangeFront(All.Class.Style.FrontColors fontColor)
         { 
@@ -205,6 +209,7 @@ namespace All.Control.Mine
                 }
                 this.Controls.Add(seven[i]);
             }
+            this.BackColor = All.Class.Style.BackColor;
             SetValue(now);
         }
         public DateTime()

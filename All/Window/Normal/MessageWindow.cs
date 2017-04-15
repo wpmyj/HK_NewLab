@@ -56,14 +56,16 @@ namespace All.Window
             this.Left = Screen.PrimaryScreen.Bounds.Width / 2 - this.Width / 2; switch (icon)
             {
                 case EIcon.Information:
+                    pictureBox1.Image = All.Properties.Resources.Infomation;
+                    break;
                 case EIcon.Alert:
-                    pictureBox1.Image = All.Properties.Resources.information;
+                    pictureBox1.Image = All.Properties.Resources.Alter;
                     break;
                 case EIcon.Error:
-                    pictureBox1.Image = All.Properties.Resources.error1;
+                    pictureBox1.Image = All.Properties.Resources.Error;
                     break;
                 case EIcon.Question:
-                    pictureBox1.Image = All.Properties.Resources.question2;
+                    pictureBox1.Image = All.Properties.Resources.Question;
                     break;
             }
             switch (button)
@@ -112,15 +114,21 @@ namespace All.Window
             switch (icon)
             {
                 case MessageBoxIcon.Asterisk:
-                case MessageBoxIcon.Exclamation:
                 case MessageBoxIcon.None:
-                    pictureBox1.Image = All.Properties.Resources.information;
+                    pictureBox1.Image = All.Properties.Resources.Infomation;
+                    System.Media.SystemSounds.Asterisk.Play();
+                    break;
+                case MessageBoxIcon.Exclamation:
+                    pictureBox1.Image = All.Properties.Resources.Alter;
+                    System.Media.SystemSounds.Exclamation.Play();
                     break;
                 case MessageBoxIcon.Question:
-                    pictureBox1.Image = All.Properties.Resources.question2;
+                    pictureBox1.Image = All.Properties.Resources.Question;
+                    System.Media.SystemSounds.Question.Play();
                     break;
                 case MessageBoxIcon.Error:
-                    pictureBox1.Image = All.Properties.Resources.error1;
+                    pictureBox1.Image = All.Properties.Resources.Error;
+                    System.Media.SystemSounds.Hand.Play();
                     break;
             }
             switch (button)

@@ -120,8 +120,8 @@
             // 
             // panTitleForMdi
             // 
-            this.panTitleForMdi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panTitleForMdi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.panTitleForMdi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panTitleForMdi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panTitleForMdi.Location = new System.Drawing.Point(0, 0);
             this.panTitleForMdi.Name = "panTitleForMdi";
             this.panTitleForMdi.Size = new System.Drawing.Size(800, 26);

@@ -15,11 +15,15 @@ namespace All.Class
             /// <summary>
             /// 白
             /// </summary>
-            White = 0xFFF0F0F0,
+            White = 0xFFFFFFFF,
             /// <summary>
             /// 黑
             /// </summary>
-            Black = 0xFF000000
+            Black = 0xFF000000,
+            /// <summary>
+            /// 灰色
+            /// </summary>
+            Gray=0xFFDEDFDE
         }
         /// <summary>
         /// 前景色
@@ -33,23 +37,23 @@ namespace All.Class
             /// <summary>
             /// 紫
             /// </summary>
-            Purple = 0xFF6E155F,
+            Purple = 0xFFA200FF,
             /// <summary>
             /// 茶绿色
             /// </summary>
-            Teal = 0xFF4EB3B9,
+            Teal = 0xFF00ABA9,
             /// <summary>
             /// 柠檬绿
             /// </summary>
-            Lime = 0xFF96B232,
+            Lime = 0xFF8CBF26,
             /// <summary>
             /// 棕色
             /// </summary>
-            Brown = 0xFFA05000,
+            Brown = 0xFF996600,
             /// <summary>
             /// 粉色
             /// </summary>
-            Pink = 0xFFE671BB,
+            Pink = 0xFFE671B8,
             /// <summary>
             /// 桔红色
             /// </summary>
@@ -69,7 +73,7 @@ namespace All.Class
             /// <summary>
             /// 海蓝色
             /// </summary>
-            Marine = 0xFF034888
+            Marine = 0xFF00ABA9
         }
         static List<ChangeTheme> allStyle = new List<ChangeTheme>();
         /// <summary>
@@ -152,7 +156,52 @@ namespace All.Class
             }
         }
         #endregion
-        #region//被动生成颜色 
+        #region//被动生成属性
+        static System.Drawing.Pen boardPen = new System.Drawing.Pen(BoardColor, 1);
+        /// <summary>
+        /// 外层边框画笔
+        /// </summary>
+        public static System.Drawing.Pen BoardPen
+        {
+            get
+            {
+                if (BoardColor != boardPen.Color)
+                {
+                    boardPen.Color = BoardColor;
+                }
+                return boardPen;
+            }
+        }
+        static System.Drawing.SolidBrush fontBrush = new System.Drawing.SolidBrush(FontColor);
+        /// <summary>
+        /// 前端字体画刷
+        /// </summary>
+        public static System.Drawing.SolidBrush FontBrush
+        {
+            get {
+                if (fontBrush.Color != FontColor)
+                {
+                    fontBrush.Color = FontColor;
+                }
+                return Style.fontBrush; }
+        }
+        static System.Drawing.SolidBrush backBrush = new System.Drawing.SolidBrush(BackColor);
+        /// <summary>
+        /// 背景画刷
+        /// </summary>
+        public static System.Drawing.SolidBrush BackBrush
+        {
+            get
+            {
+                if (backBrush.Color != BackColor)
+                {
+                    backBrush.Color = BackColor;
+                } return Style.backBrush;
+            }
+        }
+
+        #endregion
+        #region//被动生成颜色
         /// <summary>
         /// 字体色
         /// </summary>
@@ -178,6 +227,8 @@ namespace All.Class
                         return System.Windows.Forms.ControlPaint.LightLight(BoardColor);
                     case BackColors.White:
                         return System.Windows.Forms.ControlPaint.LightLight(System.Windows.Forms.ControlPaint.Light(BoardColor));
+                    case BackColors.Gray:
+                        return System.Windows.Forms.ControlPaint.LightLight(BoardColor);
                 }
                 return System.Drawing.Color.Silver;
             }
@@ -195,6 +246,8 @@ namespace All.Class
                         return System.Drawing.Color.FromArgb(100, 100, 100);
                     case BackColors.White:
                         return System.Drawing.Color.LightGray;
+                    case BackColors.Gray:
+                        return System.Drawing.Color.FromArgb(100, 100, 100);
                 }
                 return System.Drawing.Color.Silver;
             }

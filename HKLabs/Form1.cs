@@ -69,11 +69,19 @@ namespace HKLabs
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listBox1.SelectedIndex < 0)
+            {
+                return;
+            }
             All.Class.Style.ChangeBack((All.Class.Style.BackColors)Enum.Parse(typeof(All.Class.Style.BackColors), listBox1.Text));
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listBox2.SelectedIndex < 0)
+            {
+                return;
+            }
             All.Class.Style.ChangeFront((All.Class.Style.FrontColors)Enum.Parse(typeof(All.Class.Style.FrontColors), listBox2.Text));
         }
 
@@ -104,6 +112,10 @@ namespace HKLabs
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Show("天天向上,你好吗,内容长点是不是好看很多试试看?", "标题", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            this.Show("天天向上,你好吗,内容长点是不是好看很多试试看?", "标题", MessageBoxButtons.RetryCancel, MessageBoxIcon.Information);
+            this.Show("天天向上,你好吗,内容长点是不是好看很多试试看?", "标题", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Show("天天向上,你好吗,内容长点是不是好看很多试试看?", "标题", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Warning);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -124,6 +136,7 @@ namespace HKLabs
                 read1.Read<string>(out s1, 0);
                 read2.Read<string>(out s2, 0);
 
+
                 label1.SetText(string.Format("{0}_{1}", s1, s2));
                 this.CrossThreadDo(() =>
                 {
@@ -134,5 +147,20 @@ namespace HKLabs
 
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+        }
+    }
+    public class AAA
+    {
+        public int CCC
+        { get; set; }
+        public int DDD
+        { get; set; }
+        public int BBB
+        { get; set; }
+        public int EEE
+        { get; set; }
     }
 }

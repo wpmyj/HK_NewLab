@@ -218,25 +218,23 @@ namespace All.Meter
                     {
                         parm.Add("Code", "16");
                     }
-                    else
+                    byte tmpCode = All.Class.Num.ToByte(parm["Code"]);
+                    switch (tmpCode)
                     {
-                        byte tmpCode = All.Class.Num.ToByte(parm["Code"]);
-                        switch (tmpCode)
-                        {
-                            case 5:
-                            case 6:
-                                sendBuff = new byte[8];
-                                break;
-                            case 16:
-                                sendBuff = new byte[value.Count * 2 + 9];
-                                break;
-                            default:
-                                All.Class.Error.Add("数据读取指令不正确,须要先测试", Environment.StackTrace);
-                                return false;
-                        }
-                        sendBuff[0] = address;
-                        sendBuff[1] = tmpCode;
+                        case 5:
+                        case 6:
+                            sendBuff = new byte[8];
+                            break;
+                        case 16:
+                            sendBuff = new byte[value.Count * 2 + 9];
+                            break;
+                        default:
+                            All.Class.Error.Add("数据读取指令不正确,须要先测试", Environment.StackTrace);
+                            return false;
                     }
+                    sendBuff[0] = address;
+                    sendBuff[1] = tmpCode;
+                    
                     if (!parm.ContainsKey("Start") && !parm.ContainsKey("Address"))
                     {
                         All.Class.Error.Add("数据读取参数中不包含寄存器地址", Environment.StackTrace);

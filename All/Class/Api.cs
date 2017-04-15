@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 namespace All.Class
 {
     /// <summary>
@@ -23,6 +26,15 @@ namespace All.Class
         /// </summary>
         public const uint WM_MouseActivate = 0x21;
         /// <summary>
+        /// 鼠标离开
+        /// </summary>
+        public const int WM_MOUSELEAVE = 0x2A3;
+        /// <summary>
+        /// 鼠标移动
+        /// </summary>
+        public const int WM_MOUSEMove = 0x200;
+
+        /// <summary>
         /// 不激活
         /// </summary>
         public const uint MA_NoActivate = 3;
@@ -32,7 +44,9 @@ namespace All.Class
         /// 内存拷贝
         /// </summary>
         public const int ROP_SrcCopy = 0xCC0020;
-
+        //绘画
+        public const int WM_PAINT = 0x0F;
+        public const int WM_CTLCOLOREDIT = 0x133;
         /// <summary>
         /// 将指定句柄窗体设为激活窗体
         /// </summary>

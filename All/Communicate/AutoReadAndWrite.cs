@@ -184,7 +184,7 @@ namespace All.Communicate
         /// <returns></returns>
         private void InitData()
         {
-            int maxIndex = 0;
+            //int maxIndex = 0;
             Dictionary<int,string> tmpIndexs;
             if (Communicates == null || Communicates.Count <= 0)
             {
@@ -206,7 +206,7 @@ namespace All.Communicate
                     }
                     for (int k = 0; k < Communicates[i].Meters[j].Reads.Count; k++)
                     {
-                        maxIndex = -1;
+                        //maxIndex = -1;
                         if (!Communicates[i].Meters[j].Reads[k].Values.ContainsKey("Data") ||//不包含数据类型,则继续
                             !Communicates[i].Meters[j].Reads[k].Values.ContainsKey("Index"))//没有数据序号,则继续
                         {

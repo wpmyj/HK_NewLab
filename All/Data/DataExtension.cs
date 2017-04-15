@@ -11,48 +11,6 @@ namespace System
     /// </summary>
     public static class DataExtension
     {
-        #region//Form
-        /// <summary>
-        /// 跨线程调用
-        /// </summary>
-        /// <param name="frm"></param>
-        /// <param name="t"></param>
-        public static void CrossThreadDo(this Form frm, Action t)
-        {
-            if (t == null)
-            {
-                return;
-            }
-            if (frm.InvokeRequired)
-            {
-                frm.Invoke(new Action(() => t()));
-            }
-            else
-            {
-                t();
-            }
-        }
-        /// <summary>
-        /// 跨线程调用
-        /// </summary>
-        /// <param name="uc"></param>
-        /// <param name="t"></param>
-        public static void CrossThreadDo(this UserControl uc, Action t)
-        {
-            if (t == null)
-            {
-                return;
-            }
-            if (uc.InvokeRequired)
-            {
-                uc.Invoke(new Action(() => t()));
-            }
-            else
-            {
-                t();
-            }
-        }
-        #endregion
         #region//string
         /// <summary>
         /// 字节数组转化为显示的字符串

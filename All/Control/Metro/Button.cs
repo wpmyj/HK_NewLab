@@ -95,6 +95,7 @@ namespace All.Control.Metro
             sf.LineAlignment = StringAlignment.Center;
             this.MinimumSize = new Size(10, 10);
         }
+        #region//接口方法
         public void ChangeFront(All.Class.Style.FrontColors color)
         {
             this.Invalidate();
@@ -105,6 +106,19 @@ namespace All.Control.Metro
             this.ForeColor = All.Class.Style.FontColor;
             this.Invalidate();
         }
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            All.Class.Style.AllStyle.Add(this);
+            ChangeBack(All.Class.Style.Back);
+            base.OnHandleCreated(e);
+        }
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            All.Class.Style.AllStyle.Remove(this);
+            base.OnHandleDestroyed(e);
+        }
+        #endregion
+        #region//重载方法
         protected override void OnSizeChanged(EventArgs e)
         {
             Init();
@@ -144,20 +158,8 @@ namespace All.Control.Metro
             }
             base.OnMouseUp(e);
         }
-        protected override void OnHandleCreated(EventArgs e)
-        {
-            All.Class.Style.AllStyle.Add(this);
-            ChangeBack(All.Class.Style.Back);
-            base.OnHandleCreated(e);
-        }
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            All.Class.Style.AllStyle.Remove(this);
-            base.OnHandleDestroyed(e);
-        }
         protected override void OnPaintBackground(PaintEventArgs e)
         {
-            //base.OnPaintBackground(pevent); 
         }
         private void Init()
         {
@@ -184,13 +186,12 @@ namespace All.Control.Metro
                 }
                 if (boarder)
                 {
-                    g.DrawRectangle(new Pen(All.Class.Style.BoardColor, 1), 1, 1, Width - 3, Height - 3);
-                    //g.DrawRectangle(new Pen(ControlPaint.Light(ControlPaint.Dark(All.Class.Style.BoardColor)), 1), 0, 0, Width - 1, Height - 1);
+                    g.DrawRectangle(All.Class.Style.BoardPen, 1, 1, Width - 3, Height - 3);
                 }
                 if (this.BackgroundImage == null)
                 {
                     sf.LineAlignment = StringAlignment.Center;
-                    g.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), this.ClientRectangle, sf);
+                    g.DrawString(this.Text, this.Font, All.Class.Style.FontBrush, this.ClientRectangle, sf);
                 }
                 else
                 {
@@ -205,7 +206,7 @@ namespace All.Control.Metro
                                 g.DrawImage(this.BackgroundImage, new Rectangle((int)((this.Width - len) / 2), (int)((this.Height * 2 / 3 - len) * 2f / 3), (int)len, (int)len), new Rectangle(new Point(0, 0), this.BackgroundImage.Size), GraphicsUnit.Pixel);
                             }
                             sf.LineAlignment = StringAlignment.Near;
-                            g.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), new Rectangle(0, Height * 2 / 3, Width, Height / 3), sf);
+                            g.DrawString(this.Text, this.Font, All.Class.Style.FontBrush, new Rectangle(0, Height * 2 / 3, Width, Height / 3), sf);
                             break;
                         case System.Windows.Forms.Orientation.Horizontal:
                             len = Math.Min(this.Height * 2 / 3, this.Width * 3 / 10);
@@ -213,7 +214,7 @@ namespace All.Control.Metro
                             g.DrawImage(this.BackgroundImage, new Rectangle(this.Width / 2 - start / 2, this.Height / 2 - (int)(len) / 2, (int)len, (int)len), new Rectangle(new Point(0, 0), this.BackgroundImage.Size), GraphicsUnit.Pixel);
                             sf.Alignment = StringAlignment.Near;
                             sf.LineAlignment = StringAlignment.Near;
-                            g.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor),
+                            g.DrawString(this.Text, this.Font, All.Class.Style.FontBrush,
                                 new Point(this.Width / 2 - start / 2 + (int)(len * 1.3f),
                                     this.Height / 2 - All.Class.Num.GetFontHeight(this.Font) / 2), sf);
                             break;
@@ -223,5 +224,6 @@ namespace All.Control.Metro
             e.Graphics.DrawImageUnscaled(backImage, 0, 0);
             base.OnPaint(e);
         }
+        #endregion
     }
 }
