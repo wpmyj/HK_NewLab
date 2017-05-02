@@ -15,6 +15,7 @@ namespace All.Control.Metro
         public CheckBox()
         {
             InitializeComponent();
+            ChangeBack(All.Class.Style.Back);
         }
         public void ChangeFront(All.Class.Style.FrontColors color)
         {
@@ -40,7 +41,6 @@ namespace All.Control.Metro
         protected override void OnHandleCreated(EventArgs e)
         {
             All.Class.Style.AllStyle.Add(this);
-            ChangeBack(All.Class.Style.Back);
             base.OnHandleCreated(e);
         }
         protected override void OnHandleDestroyed(EventArgs e)

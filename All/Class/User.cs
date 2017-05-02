@@ -88,7 +88,9 @@ namespace All.Class
             }
             if (AllUser.Count <= 0)
             {
-                AllUser.Add(new UserSet());
+                tmp = new UserSet();
+                tmp.Save();
+                AllUser.Add(tmp);
             }
         }
         public static void Delete(string username)

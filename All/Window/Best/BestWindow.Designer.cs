@@ -39,7 +39,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTheme = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.panTitleForMdi = new All.Control.Metro.Panel(this.components);
             this.menuClose.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,27 +115,12 @@
             // 
             this.menuTheme.Name = "menuTheme";
             this.menuTheme.Size = new System.Drawing.Size(61, 4);
-            this.menuTheme.Opening += new System.ComponentModel.CancelEventHandler(this.menuTheme_Opening);
-            // 
-            // panTitleForMdi
-            // 
-            this.panTitleForMdi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panTitleForMdi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panTitleForMdi.Location = new System.Drawing.Point(0, 0);
-            this.panTitleForMdi.Name = "panTitleForMdi";
-            this.panTitleForMdi.Size = new System.Drawing.Size(800, 26);
-            this.panTitleForMdi.TabIndex = 2;
-            this.panTitleForMdi.Paint += new System.Windows.Forms.PaintEventHandler(this.panTitleForMdi_Paint);
-            this.panTitleForMdi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown);
-            this.panTitleForMdi.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove);
-            this.panTitleForMdi.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUp);
             // 
             // BestWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 480);
-            this.Controls.Add(this.panTitleForMdi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "BestWindow";
@@ -159,6 +143,5 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem 退出CToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip menuTheme;
-        private Control.Metro.Panel panTitleForMdi;
     }
 }

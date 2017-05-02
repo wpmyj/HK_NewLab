@@ -7,12 +7,11 @@ namespace All.Class
 {
     public static class Error
     {
-        static object lockObject = new object();
         /// <summary>
         /// 已存在故障值的MD5
         /// </summary>
         static List<string> exitsErrors = new List<string>();
-
+        static List<string> buff = new List<string>();
         static bool singleError = true;
         /// <summary>
         /// 是否开启单故障模式,单故障模式下,相同故障只保存一次
@@ -51,7 +50,7 @@ namespace All.Class
             {
                 if (errorFile == "")
                 {
-                    lock (lockObject)
+                    lock (buff)
                     {
                         errorFile = string.Format("{0}\\{1:yyyy-MM-dd}.Txt", ErrorPath, DateTime.Now);
                         if (!System.IO.File.Exists(errorFile))
@@ -60,6 +59,7 @@ namespace All.Class
                             sw.Close();
                             sw.Dispose();
                         }
+                        DelMoreError(10);
                     }
                 }
                 return errorFile;
@@ -71,8 +71,9 @@ namespace All.Class
         /// <param name="e"></param>
         public static void Add(Exception e)
         {
-            lock (lockObject)
+            lock (buff)
             {
+                Thread.CreateOrOpen("AllErrorThread", Flush);
                 string value = "";
                 if (e.Source != null)
                 {
@@ -99,8 +100,8 @@ namespace All.Class
                     {
                         value = string.Format("{0}出错位置  ->  {1}\r\n", value, tmpBuff[1].Substring(tmpBuff[1].IndexOf("行号")));
                     }
-                    value = string.Format("{0}出错原因  ->  {1}\r\n", value, e.Message);
-                    FileIO.Write(ErrorFile, string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n\r\n", DateTime.Now, value),System.IO.FileMode.Append);
+                    value = string.Format("{0}出错原因  ->  {1}", value, e.Message);
+                    buff.Add(string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n", DateTime.Now, value));
                 }
                 else
                 {
@@ -114,8 +115,8 @@ namespace All.Class
                         }
                         exitsErrors.Add(e.ToString());
                     }
-                    value = string.Format("{0}出错原因  ->  {1}\r\n", value, e.ToString());
-                    FileIO.Write(ErrorFile, string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n\r\n", DateTime.Now, value), System.IO.FileMode.Append);
+                    value = string.Format("{0}出错原因  ->  {1}", value, e.ToString());
+                    buff.Add(string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n", DateTime.Now, value));
                 }
             }
         }
@@ -126,8 +127,9 @@ namespace All.Class
         /// <param name="value">附加信息</param>
         public static void Add(string title, string value)
         {
-            lock (lockObject)
+            lock (buff)
             {
+                Thread.CreateOrOpen("AllErrorThread", Flush);
                 if (singleError)
                 {
                     if (exitsErrors.FindIndex(
@@ -138,7 +140,7 @@ namespace All.Class
                     }
                     exitsErrors.Add(value);
                 }
-                FileIO.Write(ErrorFile, string.Format("{0}  ->  {1}\r\n", title, value), System.IO.FileMode.Append);
+                buff.Add( string.Format("{0}  ->  {1}\r\n", title, value));
             }
         }
         /// <summary>
@@ -147,8 +149,9 @@ namespace All.Class
         /// <param name="e"></param>
         public static void Add(string message)
         {
-            lock (lockObject)
+            lock (buff)
             {
+                Thread.CreateOrOpen("AllErrorThread", Flush);
                 if (singleError)
                 {
                     if (exitsErrors.FindIndex(
@@ -159,8 +162,27 @@ namespace All.Class
                     }
                     exitsErrors.Add(message);
                 }
-                string value = string.Format("出错原因  ->  {0}\r\n", message);
-                FileIO.Write(ErrorFile, string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n{1}\r\n\r\n", DateTime.Now, value), System.IO.FileMode.Append);
+                buff.Add(string.Format("出错时间  ->  {0:yyyy-MM-dd HH:mm:ss}\r\n出错原因  ->  {1}\r\n", DateTime.Now, message));
+            }
+        }
+        /// <summary>
+        /// 多线程写入消息
+        /// </summary>
+        private static void Flush()
+        {
+            string tmp = "";
+            lock (buff)
+            {
+                if (buff.Count > 0)
+                {
+                    tmp = "";
+                    buff.ForEach(str =>
+                    {
+                        tmp = string.Format("{0}{1}\r\n", tmp, str);
+                    });
+                    FileIO.Write(ErrorFile, tmp, System.IO.FileMode.Append);
+                    buff.Clear();
+                }
             }
         }
         /// <summary>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace All.Class
 {
-    public class InfoAttribute:Attribute
+    public class InfoAttribute:System.Attribute
     {
        
     }

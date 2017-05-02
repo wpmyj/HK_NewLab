@@ -8,7 +8,7 @@ namespace All.Meter
     /// <summary>
     /// 所有仪表的基础类
     /// </summary>
-    public abstract class Meter:IDisposable
+    public abstract class Meter :IDisposable
     {
         /// <summary>
         /// 故障事件
@@ -104,7 +104,7 @@ namespace All.Meter
                 }
                 error = value; }
         }
-        internal object lockObject = new object();
+        public readonly object lockObject = new object();
         /// <summary>
         /// 初始化
         /// </summary>
@@ -214,7 +214,10 @@ namespace All.Meter
         /// 测试一次连接
         /// </summary>
         /// <returns></returns>
-        public abstract bool Test();
+        public virtual bool Test()
+        {
+            return true;
+        }
         /// <summary>
         /// 将数据直接写入通讯
         /// </summary>

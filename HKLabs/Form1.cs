@@ -11,6 +11,8 @@ namespace HKLabs
 {
     public partial class Form1 : All.Window.BaseWindow
     {
+        t1 ttt = new t1();
+        Tabel t2 = new Tabel();
         public Form1()
         {
             InitializeComponent();

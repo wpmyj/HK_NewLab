@@ -15,8 +15,8 @@ namespace All.Control.Metro
     {
         public ComboBox()
         {
-            this.BackColor = All.Class.Style.BackColor;
             InitializeComponent();
+            this.BackColor = All.Class.Style.BackColor;
         }
         protected override void OnCreateControl()
         {
@@ -39,23 +39,36 @@ namespace All.Control.Metro
             this.BackColor = All.Class.Style.BackColor;
             this.Invalidate();
         }
+        bool drawing = false;
         protected override void WndProc(ref System.Windows.Forms.Message m)
         {
             switch (m.Msg)
             {
                 case All.Class.Api.WM_PAINT:
                 case All.Class.Api.WM_CTLCOLOREDIT:
-                    base.WndProc(ref m);
-                    WmPaint(ref m);
-                    return;
+                    if (!drawing)
+                    {
+                        drawing = true;
+                        All.Class.Api.PAINTSTRUCT ps = new All.Class.Api.PAINTSTRUCT();
+                        All.Class.Api.BeginPaint(m.HWnd, ref ps);
+                        this.WmPaint(ref m);
+                        All.Class.Api.EndPaint(m.HWnd, ref ps);
+                        m.Result = All.Class.Api.True;
+                        drawing = false;
+                    }
+                    else
+                    {
+                        base.WndProc(ref m);
+                    }
+                    break;
                 default:
                     base.WndProc(ref m);
-                    return;
+                    break;
             }
         }
         private void WmPaint(ref Message m)
         {
-            Graphics g = Graphics.FromHwnd(this.Handle);
+            Graphics g = Graphics.FromHwnd(m.HWnd);
             All.Class.GDIHelp.Init(g);
             g.Clear(this.BackColor);
             switch (this.DropDownStyle)

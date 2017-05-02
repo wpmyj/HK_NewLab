@@ -264,7 +264,10 @@ namespace All.Meter
         }
         public override void Close()
         {
-            this.Parent.GetArgs -= Parent_GetArgs;
+            if (this.Parent != null)
+            {
+                this.Parent.GetArgs -= Parent_GetArgs;
+            }
             base.Close();
         }
         public override bool Read<T>(out List<T> value, Dictionary<string, string> parm)

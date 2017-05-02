@@ -11,6 +11,31 @@ namespace All.Control.Metro
 {
     public partial class Panel : System.Windows.Forms.Panel, All.Class.Style.ChangeTheme
     {
+        BorderStyle curBorderStyle = BorderStyle.None;
+        BorderStyle borderStyle = BorderStyle.None;
+        /// <summary>
+        /// 是否有边框
+        /// </summary>
+        [Category("外观")]
+        [Description("指示面板是否应具有边框")]
+        public new BorderStyle BorderStyle
+        {
+            get { return curBorderStyle; }
+            set
+            {
+                curBorderStyle = value;
+                switch (value)
+                {
+                    case System.Windows.Forms.BorderStyle.Fixed3D:
+                        borderStyle = value;
+                        break;
+                    default:
+                        borderStyle = System.Windows.Forms.BorderStyle.None;
+                        break;
+                }
+                this.Invalidate();
+            }
+        }
         public Panel(IContainer contain)
         {
             contain.Add(this);
@@ -20,6 +45,7 @@ namespace All.Control.Metro
         public Panel()
         {
             InitializeComponent();
+            this.Padding = new Padding(1, 1, 1, 1);
         }
         public void ChangeFront(All.Class.Style.FrontColors color)
         {
@@ -56,13 +82,14 @@ namespace All.Control.Metro
                 Init();
             }
             if (backImg == null)
-            { return; }
+            { return;
+            }
             using (Graphics g = Graphics.FromImage(backImg))
             {
                 g.Clear(this.BackColor);
-                if (this.BorderStyle == System.Windows.Forms.BorderStyle.FixedSingle)
+                if (curBorderStyle == System.Windows.Forms.BorderStyle.FixedSingle)
                 {
-                    g.DrawRectangle(new System.Drawing.Pen(All.Class.Style.BoardColor, 2), new System.Drawing.Rectangle(0, 0, Width - 2, Height - 2));
+                    g.DrawRectangle(All.Class.Style.BoardPen, new System.Drawing.Rectangle(0, 0, this.Width - 1, this.Height - 1));
                 }
             }
             e.Graphics.DrawImageUnscaled(backImg, 0, 0);

@@ -76,7 +76,14 @@ namespace All.Control.Metro
             using (Graphics g = Graphics.FromImage(backImage))
             {
                 g.Clear(this.BackColor);
-                g.DrawRectangle(All.Class.Style.BoardPen, 0, fontHeight / 2, this.Width - 1, this.Height - fontHeight / 2 - 1);
+                if (Text != "")
+                {
+                    g.DrawRectangle(All.Class.Style.BoardPen, 0, fontHeight / 2, this.Width - 1, this.Height - fontHeight / 2 - 1);
+                }
+                else
+                {
+                    g.DrawRectangle(All.Class.Style.BoardPen, 0, 0, this.Width - 1, this.Height - 1);
+                }
                 g.FillRectangle(All.Class.Style.BackBrush, 8, 0, All.Class.Num.GetFontWidth(this.Font, this.Text), fontHeight);
                 g.DrawString(this.Text, this.Font, All.Class.Style.FontBrush, 8, 0);
             }

@@ -108,7 +108,6 @@ namespace All.Control.Mine
                 }
             }
         }
-        Bitmap backImage;
         public Num()
         {
             InitializeComponent();
@@ -122,6 +121,7 @@ namespace All.Control.Mine
         }
         private void flush()
         { 
+
         }
         private void Init()
         {

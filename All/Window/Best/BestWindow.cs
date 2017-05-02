@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.Runtime.InteropServices;
 namespace All.Window
 {
     public partial class BestWindow : Form, All.Class.Style.ChangeTheme
@@ -20,7 +20,9 @@ namespace All.Window
         public bool CloseBox
         {
             get { return closeBox; }
-            set { closeBox = value; this.Invalidate(); }
+            set { closeBox = value; 
+                this.Invalidate();
+            }
         }
 
         bool theme = false;
@@ -32,7 +34,10 @@ namespace All.Window
         public bool Theme
         {
             get { return theme; }
-            set { theme = value; this.Invalidate(); }
+            set
+            {
+                theme = value; this.Invalidate();
+            }
         }
         bool themeBack = true;
         /// <summary>
@@ -87,6 +92,7 @@ namespace All.Window
         Rectangle rMax = Rectangle.Empty;
         Rectangle rMin = Rectangle.Empty;
         Rectangle rLine = Rectangle.Empty;
+        Rectangle rText = Rectangle.Empty;
         Rectangle rTitle = Rectangle.Empty;
         StringFormat sf;
         StringFormat sf2;
@@ -112,7 +118,6 @@ namespace All.Window
         }
         protected override void OnShown(EventArgs e)
         {
-            panTitleForMdi.Visible = this.IsMdiContainer;
             base.OnShown(e);
         }
         private void NormalWindow_Load(object sender, EventArgs e)
@@ -163,6 +168,7 @@ namespace All.Window
         private void ChangeSpace()
         {
             #region//各绘画矩形位置
+            rTitle = new Rectangle(1, 1, this.Width - 2, TitleHeight);
             //右上角
             int tmpRight = Width - 5;
             int top = (TitleHeight - iconHeight) / 2 + 1;
@@ -222,13 +228,11 @@ namespace All.Window
             {
                 rTheme = Rectangle.Empty;
             }
-            rTitle = new Rectangle(tmpleft, 4, tmpRight - tmpleft, TitleHeight);
+            rText = new Rectangle(tmpleft, 4, tmpRight - tmpleft, TitleHeight);
             #endregion
         }
         protected override void OnSizeChanged(EventArgs e)
         {
-            panTitleForMdi.Size = new System.Drawing.Size(this.Width, TitleHeight + 1);
-            panTitleForMdi.Location = new Point(0, 0);
             backImage = new Bitmap(Width, Height);
             this.Invalidate();
             base.OnSizeChanged(e);
@@ -241,6 +245,22 @@ namespace All.Window
         {
             MouseDown(this,e);
             base.OnMouseDown(e);
+        }
+        protected override void OnDoubleClick(EventArgs e)
+        {
+            if (this.MaximizeBox && this.RectangleToScreen(rTitle).Contains(MousePosition))
+            {
+                switch (this.WindowState)
+                {
+                    case FormWindowState.Maximized:
+                        this.WindowState = FormWindowState.Normal;
+                        break;
+                    case FormWindowState.Normal:
+                        this.WindowState = FormWindowState.Maximized;
+                        break;
+                }
+            }
+            base.OnDoubleClick(e);
         }
         private new void  MouseDown(object sender,MouseEventArgs e)
         {
@@ -350,11 +370,7 @@ namespace All.Window
             }
             base.OnPreviewKeyDown(e);
         }
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            //base.OnPaintBackground(e);
-        }
-        private new void Paint(object sender, PaintEventArgs e)
+        private void PaintBack()
         {
             if (backImage == null)
             {
@@ -377,7 +393,7 @@ namespace All.Window
                 #region//3D框
                 #endregion
                 //标题栏
-                g.FillRectangle(new SolidBrush(All.Class.Style.TitleColor), 1, 1, this.Width - 2, TitleHeight);
+                g.FillRectangle(new SolidBrush(All.Class.Style.TitleColor),rTitle);
                 //图标
                 if (rIcon != Rectangle.Empty)
                 {
@@ -432,29 +448,26 @@ namespace All.Window
                     }
                 }
                 //标题
-                if (rTitle != Rectangle.Empty)
+                if (rText != Rectangle.Empty)
                 {
-                    g.DrawString(this.Text, new Font("新宋体", 10, FontStyle.Bold), new SolidBrush(All.Class.Style.FontColor), rTitle, sf2);
+                    g.DrawString(this.Text, new Font("新宋体", 10, FontStyle.Bold), new SolidBrush(All.Class.Style.FontColor), rText, sf2);
                 }
                 g.DrawRectangle(new Pen(new SolidBrush(SystemColors.ControlDark)), 0, 0, this.Width - 1, this.Height - 1);
                 g.DrawRectangle(new Pen(new SolidBrush(SystemColors.Control)), 1, 1, this.Width - 3, this.Height - 3);
             }
         }
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (!this.IsMdiContainer)
-            {
-                Paint(this, e);
-                e.Graphics.DrawImage(backImage, 0, 0);
-            }
             base.OnPaint(e);
         }
-
         private void menuClose_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
             this.ContextMenuStrip = null;
         }
-
         private void 退出CToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -493,24 +506,42 @@ namespace All.Window
                 All.Class.Style.ChangeBack((All.Class.Style.BackColors)Enum.Parse(typeof(All.Class.Style.BackColors), tsi.Text));
             }
         }
-        private void menuTheme_Opening(object sender, CancelEventArgs e)
+        bool drawing = false;
+        protected override void WndProc(ref Message m)
         {
-        }
+            switch (m.Msg)
+            {
+                case All.Class.Api.WM_PAINT:
+                    if (!drawing)
+                    {
+                        All.Class.Api.PAINTSTRUCT ps = new All.Class.Api.PAINTSTRUCT();
 
+                        drawing = true;
+                        All.Class.Api.BeginPaint(m.HWnd, ref ps);
+                        this.PaintBack();
+                        using (Graphics g = Graphics.FromHwnd(m.HWnd))
+                        {
+                            g.DrawImageUnscaled(backImage, 0, 0);
+                        }
+                        All.Class.Api.EndPaint(m.HWnd, ref ps);
+                        drawing = false;
+                        m.Result = All.Class.Api.True;
+                    }
+                    else
+                    {
+                        base.WndProc(ref m);
+                    }
+                    break;
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
+        }
         private void BestWindow_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Escape)
             {
                 this.Close();
-            }
-        }
-
-        private void panTitleForMdi_Paint(object sender, PaintEventArgs e)
-        {
-            if (this.IsMdiContainer)
-            {
-                Paint(panTitleForMdi, e);
-                e.Graphics.DrawImage(backImage, 0, 0);
             }
         }
     }

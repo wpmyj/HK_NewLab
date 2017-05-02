@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\Log.cs" />
+    <Compile Include="Attribute\Save.cs" />
     <Compile Include="Class\Api.cs" />
     <Compile Include="Class\Check.cs" />
     <Compile Include="Class\Code.cs" />
@@ -51,11 +53,13 @@
     <Compile Include="Class\GDIHelp.cs" />
     <Compile Include="Class\HardInfo.cs" />
     <Compile Include="Class\InfoAttribute.cs" />
+    <Compile Include="Class\Log.cs" />
     <Compile Include="Class\Net.cs" />
     <Compile Include="Class\Num.cs" />
     <Compile Include="Class\Reflex.cs" />
     <Compile Include="Class\Region.cs" />
     <Compile Include="Class\Style.cs" />
+    <Compile Include="Class\Thread.cs" />
     <Compile Include="Class\TypeUse.cs" />
     <Compile Include="Class\User.cs" />
     <Compile Include="Class\XmlHelp.cs" />
@@ -222,6 +226,7 @@
     <Compile Include="Meter\Board\I7017.cs" />
     <Compile Include="Meter\Elect\Elect.cs" />
     <Compile Include="Meter\Elect\Qz3432b.cs" />
+    <Compile Include="Meter\HKBoard\HaierRemoteControl.cs" />
     <Compile Include="Meter\MCGSModbusRtu.cs" />
     <Compile Include="Meter\Meter.cs" />
     <Compile Include="Meter\AnGui\Mn42xx.cs" />

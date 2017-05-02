@@ -11,6 +11,7 @@ namespace All.Control.Metro
 {
     public partial class MetroPanel :System.Windows.Forms.UserControl, All.Class.Style.ChangeTheme
     {
+
         public MetroPanel()
         {
             InitializeComponent();

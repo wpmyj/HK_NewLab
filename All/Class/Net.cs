@@ -37,7 +37,7 @@ namespace All.Class
         }
         public event Action<PingResult> PingResultArgs;
         public event Action<List<PingResult>> PingAllResultArgs;
-        Thread[] thPing = new Thread[PingThreadCount];
+        System.Threading.Thread[] thPing = new System.Threading.Thread[PingThreadCount];
         List<int>[] InPing = new List<int>[PingThreadCount];//分组
         bool[] OverPing = new bool[PingThreadCount];//是否Ping完成
         List<PingResult> allResult = new List<PingResult>();
@@ -78,7 +78,7 @@ namespace All.Class
             for (int i = 0; i < PingThreadCount; i++)
             {
                 int index = i;
-                thPing[i] = new Thread(() => EveryThreadPing(string.Format("{0}.{1}.{2}.", one, two, three), index));
+                thPing[i] = new System.Threading.Thread(() => EveryThreadPing(string.Format("{0}.{1}.{2}.", one, two, three), index));
                 thPing[i].IsBackground = true;
                 thPing[i].Start();
             }
