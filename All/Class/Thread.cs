@@ -123,7 +123,7 @@ namespace All.Class
         /// <param name="action"></param>
         public static void CreateOrOpen(Action action)
         {
-            CreateOrOpen(System.Guid.NewGuid().ToString(), action);
+            CreateOrOpen(Num.CreateGUID(), action);
         }
     }
 }

@@ -962,6 +962,13 @@ namespace All.Class
             catch { }
             return result.ToArray();
         }
-        
+        /// <summary>
+        /// 获取全局唯一标识符
+        /// </summary>
+        /// <returns></returns>
+        public static string CreateGUID()
+        {
+            return System.Guid.NewGuid().ToString().ToUpper();
+        }
     }
 }

@@ -43,15 +43,19 @@ namespace All.Data
         /// 数据库连接
         /// </summary>
         public abstract System.Data.Common.DbConnection Conn
-        { get; }
+        { get;  }
         /// <summary>
         /// 将表批量更新到数据库,一定要有主键
         /// </summary>
         /// <param name="dt">要更新的表,dt.TableName不能为空</param>
         /// <returns>更新的行数</returns>
         public abstract int BlockCommand(DataTable dt);
-
-        
+        /// <summary>
+        /// 直接设置连接
+        /// </summary>
+        /// <param name="conn">连接</param>
+        public virtual void SetConn(System.Data.Common.DbConnection conn)
+        { }
         /// <summary>
         /// 登陆到指定数据库
         /// </summary>

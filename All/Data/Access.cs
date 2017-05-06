@@ -53,6 +53,14 @@ namespace All.Data
                 return result;
             }
         }
+        public override void SetConn(System.Data.Common.DbConnection conn)
+        {
+            if (conn is OleDbConnection)
+            {
+                this.conn = conn as OleDbConnection;
+            }
+            base.SetConn(conn);
+        }
         public bool Login(string FileName, string UserName, string Password)
         {
             lock (lockObject)

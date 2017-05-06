@@ -1163,5 +1163,34 @@ namespace System
         }
 
         #endregion
+        #region//字典
+
+        /// <summary>
+        /// 将指定文件加载成字典数据
+        /// </summary>
+        /// <param name="fileName">文件名称</param>
+        /// <returns>返回字典</returns>
+        public static Dictionary<string,string> GetBuffFromFile(this string fileName)
+        {
+            if (System.IO.File.Exists(fileName))
+            {
+                return  All.Class.SingleFileSave.SSFile.Text2Dictionary(All.Class.FileIO.ReadFile(fileName));
+            }
+            return new Dictionary<string, string>();
+        }
+        /// <summary>
+        /// 将字典数据保存到文件 
+        /// </summary>
+        /// <param name="buff">字典数据</param>
+        /// <param name="fileName">文件名称</param>
+        public static void SaveBuffToFile(this Dictionary<string, string> buff, string fileName)
+        {
+            if (buff == null)
+            {
+                return;
+            }
+            All.Class.FileIO.Write(fileName, All.Class.SingleFileSave.SSFile.Dictionary2Text(buff));
+        }
+        #endregion
     }
 }

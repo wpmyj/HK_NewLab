@@ -355,13 +355,14 @@ namespace All.Factory.Midea
             Dictionary<string, string> parm = new Dictionary<string, string>();
             parm.Add("Start", "200");
             parm.Add("End", "239");
+            Thread.Sleep(2000);
+            SetTestStatue();
             while (!exit)
             {
                 lock (lockObject)
                 {
                     if (this.Meter != null)
                     {
-                        SetTestStatue();
                         if (this.Meter.Read<ushort>(out tmp, parm))
                         {
                             Array.Copy(tmp.ToArray(), buff, 40);

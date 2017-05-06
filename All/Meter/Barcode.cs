@@ -76,7 +76,7 @@ namespace All.Meter
         }
         public override bool Test()
         {
-            return true;//条码没有办法测试,所以直接返回
+            return this.Parent != null && this.Parent.IsOpen;//条码没有办法测试,所以直接返回
         }
         public override bool Read<T>(out List<T> value, int start, int end)
         {

@@ -194,10 +194,15 @@ namespace All.Meter
                                     }
                                     break;
                                 case Class.TypeUse.TypeList.UShort:
+                                    for (int i = 0; i < tmp.Length - 1; i = i + 2)
+                                    {
+                                        value.Add((T)(object)(ushort)((((tmp[i] << 8) + tmp[i + 1])) & 0xFFFF));
+                                    }
+                                    break;
                                 case Class.TypeUse.TypeList.Long:
                                     for (int i = 0; i < tmp.Length - 1; i = i + 2)
                                     {
-                                        value.Add((T)(object)((tmp[i] << 8) + tmp[i + 1]));
+                                        value.Add((T)(object)(long)(((tmp[i] << 8) + tmp[i + 1])));
                                     }
                                     break;
                                 case Class.TypeUse.TypeList.String:
