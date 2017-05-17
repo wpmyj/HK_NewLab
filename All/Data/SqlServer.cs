@@ -12,6 +12,13 @@ namespace All.Data
         public override System.Data.Common.DbConnection Conn
         {
             get { return conn; }
+            set
+            {
+                if (conn is SqlConnection)
+                {
+                    this.conn = conn as SqlConnection;
+                }
+            }
         }
         public override int BlockCommand(DataTable dt)
         {

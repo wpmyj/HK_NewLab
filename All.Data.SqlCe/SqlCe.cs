@@ -25,6 +25,13 @@ namespace All.Data
         public override System.Data.Common.DbConnection Conn
         {
             get { return conn; }
+            set
+            {
+                if (conn is SqlCeConnection)
+                {
+                    this.conn = conn as SqlCeConnection;
+                }
+            }
         }
         /// <summary>
         /// 判断SQLCE所须文件是否存在

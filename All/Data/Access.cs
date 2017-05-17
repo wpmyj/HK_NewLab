@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.Common;
+
 namespace All.Data
 {
     public class Access:DataReadAndWrite
@@ -12,6 +14,20 @@ namespace All.Data
         public override System.Data.Common.DbConnection Conn
         {
             get { return conn; }
+            set
+            {
+                if (conn is OleDbConnection)
+                {
+                    this.conn = conn as OleDbConnection;
+                }
+            }
+        }
+        public override void SetConn(DbConnection conn)
+        {
+            if (conn is OleDbConnection)
+            {
+                this.conn = conn as OleDbConnection;
+            }
         }
         public override int BlockCommand(DataTable dt)
         {
@@ -52,14 +68,6 @@ namespace All.Data
                 }
                 return result;
             }
-        }
-        public override void SetConn(System.Data.Common.DbConnection conn)
-        {
-            if (conn is OleDbConnection)
-            {
-                this.conn = conn as OleDbConnection;
-            }
-            base.SetConn(conn);
         }
         public bool Login(string FileName, string UserName, string Password)
         {

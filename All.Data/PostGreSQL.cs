@@ -10,6 +10,7 @@ namespace All.Data
         public override System.Data.Common.DbConnection Conn
         {
             get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
         }
         public override int BlockCommand(System.Data.DataTable dt)
         {

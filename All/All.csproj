@@ -157,6 +157,12 @@
     <Compile Include="Control\Mine\DateTime.Designer.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\Mine\GridJiLiang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\Mine\GridJiLiang.Designer.cs">
+      <DependentUpon>GridJiLiang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\Mine\Light.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -335,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Metro\MetroPanel.resx">
       <DependentUpon>MetroPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\Mine\GridJiLiang.resx">
+      <DependentUpon>GridJiLiang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\Mine\Shape.resx">
       <DependentUpon>Shape.cs</DependentUpon>

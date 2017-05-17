@@ -43,7 +43,7 @@ namespace All.Data
         /// 数据库连接
         /// </summary>
         public abstract System.Data.Common.DbConnection Conn
-        { get;  }
+        { get; set; }
         /// <summary>
         /// 将表批量更新到数据库,一定要有主键
         /// </summary>
@@ -55,7 +55,9 @@ namespace All.Data
         /// </summary>
         /// <param name="conn">连接</param>
         public virtual void SetConn(System.Data.Common.DbConnection conn)
-        { }
+        {
+            this.Conn = conn;
+        }
         /// <summary>
         /// 登陆到指定数据库
         /// </summary>
